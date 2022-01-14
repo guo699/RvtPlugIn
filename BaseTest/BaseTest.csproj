@@ -68,6 +68,7 @@
     <Compile Include="Command\DocRegenerateCmd.cs" />
     <Compile Include="Command\DoDimesionCommand.cs" />
     <Compile Include="Command\ExportStlCommand.cs" />
+    <Compile Include="Command\UpdateViewCommand.cs" />
     <Compile Include="Command\ViewCreateCommand.cs" />
     <Compile Include="Common\TransactionDelegate.cs" />
     <Compile Include="Projects\DetailTableCreate.cs" />

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{50E5692B-C70E-4950-814F-4959E41E754E}</ProjectGuid>
+    <ProjectGuid>{C2B1197F-7B60-4DE4-8CC1-42233C8E9838}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DirectGaphic</RootNamespace>
-    <AssemblyName>DirectGaphic</AssemblyName>
+    <RootNamespace>DirectGraphicsUtility</RootNamespace>
+    <AssemblyName>DirectGraphicsUtility</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -49,10 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CurveContextServer.cs" />
-    <Compile Include="DirectCommand.cs" />
-    <Compile Include="DirectContextServerBase.cs" />
-    <Compile Include="FaceContextServer.cs" />
+    <Compile Include="Core\CurveDirectServer.cs" />
+    <Compile Include="Core\DirectContextServer.cs" />
+    <Compile Include="Core\DirectServerRegister.cs" />
+    <Compile Include="Core\FaceDirectServer.cs" />
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="Model\CMesh.cs" />
+    <Compile Include="Model\CTriangular.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

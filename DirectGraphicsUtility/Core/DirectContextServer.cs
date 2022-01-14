@@ -3,51 +3,58 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.DirectContext3D;
 using Autodesk.Revit.DB.ExternalService;
 
-namespace DirectGaphic
+namespace DirectGraphicsUtility.Core
 {
-    class DirectContextServerBase : IDirectContext3DServer
+    class DirectContextServer : IDirectContext3DServer
     {
-        protected VertexBuffer _vertexBuffer;
-        protected int _vertexBufferCount;
-        protected IndexBuffer _indexBuffer;
-        protected int _indexBufferCount;
-        protected Guid m_guid;
-        public DirectContextServerBase()
+        private Guid _serverId;
+
+        public Guid ServerID
         {
-            m_guid = Guid.NewGuid();
+            get { return _serverId; }
+            protected set { _serverId = value; }
+        }
+
+        public DirectContextServer()
+        {
+            _serverId = Guid.NewGuid();
         }
         public bool CanExecute(View dBView)
         {
-            return true;
+            return dBView is View3D;
         }
 
         public string GetApplicationId()
         {
-            return "123";
+            return "";
         }
 
         public Outline GetBoundingBox(View dBView)
         {
-            return null;
+            BoundingBoxXYZ box = dBView.get_BoundingBox(null);
+            XYZ min = box.Min;
+            XYZ max = box.Max;
+            return new Outline(min, max);
         }
 
         public string GetDescription()
         {
-            return "098";
+            return "IronBIN Direct3DContextServer Class";
         }
 
         public string GetName()
         {
-            return "345";
+            return "IronBIN Server";
         }
 
         public Guid GetServerId()
         {
-            return m_guid;
+            return _serverId;
         }
 
         public ExternalServiceId GetServiceId()
@@ -57,17 +64,17 @@ namespace DirectGaphic
 
         public string GetSourceId()
         {
-            return "456";
+            return "";
         }
 
         public string GetVendorId()
         {
-            return "567";
+            return "IronBIN";
         }
 
         public virtual void RenderScene(View dBView, DisplayStyle displayStyle)
         {
-            
+
         }
 
         public bool UseInTransparentPass(View dBView)
