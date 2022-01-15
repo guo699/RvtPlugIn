@@ -19,6 +19,14 @@ namespace DirectGraphicsUtility.Model
         {
 
         }
+        public CTriangular(XYZ point1,XYZ point2,XYZ point3,ColorWithTransparency color)
+        {
+            PointA = point1;
+            PointB = point2;
+            PointC = point3;
+            TColor = color;
+            Normal = (point1 - point2).CrossProduct(point3 - point2).Normalize();
+        }
         public CTriangular(XYZ point1,XYZ point2,XYZ point3,XYZ normal)
         {
             PointA = point1;

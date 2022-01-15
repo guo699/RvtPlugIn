@@ -25,6 +25,10 @@ namespace DirectGraphicsUtility.Core
         {
             _triangulars = new List<CTriangular>() { tface };
         }
+        public FaceDirectServer(List<CTriangular> triangulars)
+        {
+            _triangulars = triangulars;
+        }
         public FaceDirectServer(CMesh mesh)
         {
             _triangulars = mesh.Triangulars;

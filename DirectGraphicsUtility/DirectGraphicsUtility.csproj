@@ -53,9 +53,14 @@
     <Compile Include="Core\DirectContextServer.cs" />
     <Compile Include="Core\DirectServerRegister.cs" />
     <Compile Include="Core\FaceDirectServer.cs" />
+    <Compile Include="Core\SolidDirectServer.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="Model\CCude.cs" />
     <Compile Include="Model\CMesh.cs" />
+    <Compile Include="Model\CRectangle.cs" />
+    <Compile Include="Model\CSurface.cs" />
     <Compile Include="Model\CTriangular.cs" />
+    <Compile Include="Numbers\nc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
