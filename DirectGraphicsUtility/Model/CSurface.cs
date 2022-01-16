@@ -22,8 +22,8 @@ namespace DirectGraphicsUtility.Model
         {
             _xdomain = (-10, 10);
             _ydomain = (-10, 10);
-            _xnums = 200;
-            _ynums = 200;
+            _xnums = 50;
+            _ynums = 50;
             _xthicks = new double[_xnums];
             _ythicks = new double[_ynums];
             _points = new XYZ[_xnums, _ynums];
@@ -56,10 +56,10 @@ namespace DirectGraphicsUtility.Model
         }
         private double Function(double x,double y)
         {
-            //return (Math.Pow(x, 2) + Math.Pow(y, 2)) / 50.0;
+            return (Math.Pow(x, 3) + Math.Pow(y, 2)) / 50.0;
             //return 0;
             //return Math.Pow(Math.Sin(x), 2) + Math.Pow(Math.Cos(y), 2);
-            return Math.Sin(x) + Math.Cos(y);
+            //return Math.Sin(x) + Math.Cos(y);
         }
     }
 }

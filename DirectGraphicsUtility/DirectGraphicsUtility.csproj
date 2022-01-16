@@ -58,6 +58,7 @@
     <Compile Include="Model\CCude.cs" />
     <Compile Include="Model\CMesh.cs" />
     <Compile Include="Model\CRectangle.cs" />
+    <Compile Include="Model\CSphere.cs" />
     <Compile Include="Model\CSurface.cs" />
     <Compile Include="Model\CTriangular.cs" />
     <Compile Include="Numbers\nc.cs" />
