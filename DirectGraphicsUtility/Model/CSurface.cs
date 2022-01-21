@@ -22,8 +22,8 @@ namespace DirectGraphicsUtility.Model
         {
             _xdomain = (-10, 10);
             _ydomain = (-10, 10);
-            _xnums = 50;
-            _ynums = 50;
+            _xnums = 100;
+            _ynums = 100;
             _xthicks = new double[_xnums];
             _ythicks = new double[_ynums];
             _points = new XYZ[_xnums, _ynums];
@@ -43,23 +43,24 @@ namespace DirectGraphicsUtility.Model
             }
 
             CRectangle rect;
-            ColorWithTransparency color;
+            ColorWithTransparency color_w = new ColorWithTransparency(0, 0, 0, 1);
+            ColorWithTransparency color_b = new ColorWithTransparency(255, 255, 255, 1);
             for (int i = 0; i < _xnums-1; i++)
             {
                 for (int j = 0; j < _ynums-1; j++)
                 {
-                    color = new ColorWithTransparency(255, 255, 0, 0);
-                    rect = new CRectangle(_points[i, j], _points[i, j + 1], _points[i + 1, j+1], _points[i + 1, j],color);
+                    rect = new CRectangle(_points[i, j], _points[i, j + 1], _points[i + 1, j + 1], _points[i + 1, j], (i + j) % 2 == 0 ? color_w : color_b);
                     Triangulars.AddRange(rect.Triangulars);
                 }
             }
         }
         private double Function(double x,double y)
         {
-            return (Math.Pow(x, 3) + Math.Pow(y, 2)) / 50.0;
+            //return (Math.Pow(x, 3) + Math.Pow(y, 3)) / 50.0;
             //return 0;
-            //return Math.Pow(Math.Sin(x), 2) + Math.Pow(Math.Cos(y), 2);
+            return Math.Pow(Math.Sin(x), 2) + Math.Pow(Math.Cos(y), 2);
             //return Math.Sin(x) + Math.Cos(y);
+            //return Math.Sin(Math.Pow(x, 2)) + Math.Cos(Math.Pow(y, 2));
         }
     }
 }

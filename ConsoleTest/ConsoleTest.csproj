@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C2B1197F-7B60-4DE4-8CC1-42233C8E9838}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DirectGraphicsUtility</RootNamespace>
-    <AssemblyName>DirectGraphicsUtility</AssemblyName>
+    <ProjectGuid>{C0108560-99A2-41D0-B57F-95D097CBCC01}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConsoleTest</RootNamespace>
+    <AssemblyName>ConsoleTest</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,9 +22,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,14 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\Revit2018\Revit 2018\RevitAPI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\Revit2018\Revit 2018\RevitAPIUI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,29 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\CurveDirectServer.cs" />
-    <Compile Include="Core\DirectContextServer.cs" />
-    <Compile Include="Core\DirectServerRegister.cs" />
-    <Compile Include="Core\FaceDirectServer.cs" />
-    <Compile Include="Core\SolidDirectServer.cs" />
-    <Compile Include="Data\Geometry\MeshEntity.cs" />
-    <Compile Include="Data\Geometry\Point3D.cs" />
-    <Compile Include="Data\Geometry\RGBA.cs" />
-    <Compile Include="Data\Geometry\TrianglePatch.cs" />
-    <Compile Include="Data\unmanaged\Disposer.cs" />
-    <Compile Include="Data\unmanaged\IUnmgdMemoryBlock.cs" />
-    <Compile Include="Data\unmanaged\UnmgdMemoryBlock.cs" />
-    <Compile Include="Data\Utilities\InfoOf.cs" />
-    <Compile Include="EntryPoint.cs" />
-    <Compile Include="Model\CCude.cs" />
-    <Compile Include="Model\CMesh.cs" />
-    <Compile Include="Model\CRectangle.cs" />
-    <Compile Include="Model\CSphere.cs" />
-    <Compile Include="Model\CSurface.cs" />
-    <Compile Include="Model\CTriangular.cs" />
-    <Compile Include="Numbers\nc.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

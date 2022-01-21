@@ -68,6 +68,7 @@
     <Compile Include="Command\DocRegenerateCmd.cs" />
     <Compile Include="Command\DoDimesionCommand.cs" />
     <Compile Include="Command\ExportStlCommand.cs" />
+    <Compile Include="Command\RandomText.cs" />
     <Compile Include="Command\UpdateViewCommand.cs" />
     <Compile Include="Command\ViewCreateCommand.cs" />
     <Compile Include="Common\TransactionDelegate.cs" />
@@ -104,6 +105,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RevitCommon\RevitCommon.csproj">
+      <Project>{501fe747-6195-42de-a6a7-7175b90dd1fd}</Project>
+      <Name>RevitCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
