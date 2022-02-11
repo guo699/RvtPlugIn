@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.Numerical
 {
-    public class NDArray<T> : IDisposable,IEnumerable where T:unmanaged
+    public class NDArray<T> : IDisposable where T:unmanaged
     {
         private IntPtr _ptr;
         private bool _disposed;
@@ -22,7 +22,6 @@ namespace RevitCommon.Numerical
             }
             _disposed = false;
         }
-
         #region Getter
         public T GetValue(long index)
         {
@@ -49,7 +48,6 @@ namespace RevitCommon.Numerical
             }
         }
         #endregion
-
         public void Dispose() => ReleaseUnmgdMemory();
         private void ReleaseUnmgdMemory()
         {
@@ -61,12 +59,6 @@ namespace RevitCommon.Numerical
                 Marshal.FreeHGlobal(_ptr);
             }
         }
-
-        public IEnumerator GetEnumerator()
-        {
-            return new Enumerator();
-        }
-
         ~NDArray() => ReleaseUnmgdMemory();
     }
 

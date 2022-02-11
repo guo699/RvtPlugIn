@@ -9,7 +9,7 @@ namespace RevitCommon.Extensions
 {
     public static class DocumentEx
     {
-        public static IList<Element> GetElements(this Document doc)
+        public static IList<Element> GetAllElements(this Document doc)
         {
             return new FilteredElementCollector(doc).ToElements();
         }

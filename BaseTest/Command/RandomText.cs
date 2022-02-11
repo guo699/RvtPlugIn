@@ -16,7 +16,7 @@ namespace BaseTest.Command
 {
     [Transaction(TransactionMode.Manual)]
     [Regeneration(RegenerationOption.Manual)]
-    class RandomText : IExternalCommand
+    internal class RandomText : IExternalCommand
     {
         private UIDocument UIDoc;
         private Document Doc;
@@ -26,20 +26,25 @@ namespace BaseTest.Command
             Doc = UIDoc.Document;
 
             //TextNoteType noteType = Doc.GetElements<TextNoteType>().FirstOrDefault();
-            //this.CreateTexts(50, noteType);
+            //this.CreateTexts(40, noteType);
 
-            IList<Reference> refs = UIDoc.Selection.PickObjects(ObjectType.Element, new SelectionFilter(n => n is TextNote));
-            List<TextNote> notes = refs.Select(Doc.GetElement).OfType<TextNote>().ToList();
+            double[] result = new double[5];
+            for (int i = 0; i < 5; i++)
+            {
+                IList<Reference> refs = UIDoc.Selection.PickObjects(ObjectType.Element, new SelectionFilter(n => n is TextNote));
+                List<TextNote> notes = refs.Select(Doc.GetElement).OfType<TextNote>().ToList();
 
-            List<XYZ> points = notes.Select(n => n.Coord).ToList();
+                List<XYZ> points = notes.Select(n => n.Coord).ToList();
 
-            List<double> xs = points.Select(n => n.X).ToList();
-            List<double> ys = points.Select(n => n.Y).ToList();
-            double stdx = Variance(xs);
-            double stdy = Variance(ys);
-            double stdplane = Math.Pow(stdx, 2) + Math.Pow(stdy, 2);
+                List<double> xs = points.Select(n => n.X).ToList();
+                List<double> ys = points.Select(n => n.Y).ToList();
+                double stdx = Variance(xs);
+                double stdy = Variance(ys);
+                double stdplane = Math.Pow(stdx.Feet2MM(), 2) + Math.Pow(stdy.Feet2MM(), 2);
+                result[i] = stdplane;
+            }
 
-            TaskDialog.Show("Dis", stdplane.ToString());
+            TaskDialog.Show("Dis", string.Join("\n",result));
 
             return Result.Succeeded;
         }

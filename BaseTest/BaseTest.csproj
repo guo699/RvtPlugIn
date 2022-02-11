@@ -41,6 +41,9 @@
     <Reference Include="AdWindows">
       <HintPath>..\..\..\..\..\AutoCAD2016\AutoCAD 2016\AdWindows.dll</HintPath>
     </Reference>
+    <Reference Include="NumSharp, Version=0.30.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\NumSharp.0.30.0\lib\netstandard2.0\NumSharp.dll</HintPath>
+    </Reference>
     <Reference Include="RevitAPI">
       <HintPath>..\..\..\..\..\Revit2018\Revit 2018\RevitAPI.dll</HintPath>
       <Private>False</Private>
@@ -50,7 +53,20 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -65,19 +81,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\DocRegenerateCmd.cs" />
-    <Compile Include="Command\DoDimesionCommand.cs" />
-    <Compile Include="Command\ExportStlCommand.cs" />
+    <Compile Include="Command\AboutCurve.cs" />
     <Compile Include="Command\RandomText.cs" />
-    <Compile Include="Command\UpdateViewCommand.cs" />
-    <Compile Include="Command\ViewCreateCommand.cs" />
     <Compile Include="Common\TransactionDelegate.cs" />
-    <Compile Include="Projects\DetailTableCreate.cs" />
-    <Compile Include="Projects\ElementToStlModel.cs" />
-    <Compile Include="Projects\MainWindows.xaml.cs">
-      <DependentUpon>MainWindows.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Projects\OffsetLinesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,16 +101,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Projects\MainWindows.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RevitCommon\RevitCommon.csproj">

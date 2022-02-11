@@ -27,5 +27,10 @@ namespace RevitCommon.Extensions
         {
             return radian * 360 / (2 * Math.PI);
         }
+
+        public static double Round(this double value,int decimals)
+        {
+            return Math.Round(value, decimals);
+        }
     }
 }
