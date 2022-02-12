@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RevitCommon.Numerical.Matrix.Basic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,30 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             get{ return MemoryStorage[_shape.Row * row + col];}
             set{ MemoryStorage[_shape.Col * row + col] = value;}
+        }
+        public Mat this[int index,Axis axis = Axis.H]
+        {
+            get
+            {
+                if(axis == Axis.H)
+                {
+                    Mat ret = new Mat(1, Shape.Col);
+                    for (int i = 0; i < Shape.Col; i++)
+                    {
+                        ret[0, i] = this[index, i];
+                    }
+                    return ret;
+                }
+                else
+                {
+                    Mat ret = new Mat(Shape.Row, 1);
+                    for (int i = 0; i < Shape.Row; i++)
+                    {
+                        ret[i, 0] = this[i, index];
+                    }
+                    return ret;
+                }
+            }
         }
         private void FillValue(double fillvalue)
         {

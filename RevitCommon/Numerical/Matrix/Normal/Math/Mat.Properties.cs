@@ -33,7 +33,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             return !IsScalar() && this.Shape.Col == 1;
         }
-
         /// <summary>
         /// 矩阵行数和列数均大于1才为矩阵
         /// </summary>

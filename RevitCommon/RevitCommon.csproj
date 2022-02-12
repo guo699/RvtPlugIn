@@ -74,6 +74,7 @@
     <Compile Include="Extensions\LinqEx.cs" />
     <Compile Include="Extensions\XYZEx.cs" />
     <Compile Include="ML\KNN.cs" />
+    <Compile Include="Numerical\Matrix\Basic\Axis.cs" />
     <Compile Include="Numerical\Matrix\Basic\MatTypeCode.cs" />
     <Compile Include="Numerical\Matrix\Generic\Contracts.cs" />
     <Compile Include="Numerical\Matrix\Generic\Creation\Mat.Creation.cs" />
@@ -86,8 +87,12 @@
     <Compile Include="Numerical\Matrix\Basic\Shape.cs" />
     <Compile Include="Numerical\Matrix\Basic\UnmgdMemoryBlock.cs" />
     <Compile Include="Numerical\Matrix\Normal\Mat.cs" />
-    <Compile Include="Numerical\Matrix\Normal\Math\Mat.cs" />
+    <Compile Include="Numerical\Matrix\Normal\Math\Mat.Compute.cs" />
+    <Compile Include="Numerical\Matrix\Normal\Math\Mat.Creation.cs" />
+    <Compile Include="Numerical\Matrix\Normal\Math\Mat.Operator.cs" />
     <Compile Include="Numerical\Matrix\Normal\Math\Mat.Properties.cs" />
+    <Compile Include="Numerical\Matrix\Normal\Math\Mat.Random.cs" />
+    <Compile Include="Numerical\Matrix\Normal\Math\Mat.Transform.cs" />
     <Compile Include="Numerical\RandomGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilitis\ExtendKey.cs" />
