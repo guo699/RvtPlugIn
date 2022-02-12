@@ -5,32 +5,24 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-
-using NumSharp;
+using RevitCommon.Numerical.Matrix.Normal;
+using RevitCommon.Utilitis;
 
 
 namespace ConsoleTest
 {
     class Program
     {
-        static void Test()
-        {
-
-        }
         static void Main(string[] args)
         {
+            double m1 = SysHelper.GetMemory();
+            Mat mat = new Mat(10000, 10000, 233);
 
-        }
+            double m2 = SysHelper.GetMemory();
+            mat.Dispose();
+            double m3 = SysHelper.GetMemory();
 
-        public static string GetMemory()
-        {
-            Process proc = Process.GetCurrentProcess();
-            long b = proc.PrivateMemorySize64;
-            for (int i = 0; i < 2; i++)
-            {
-                b /= 1024;
-            }
-            return b + "MB";
+            Console.WriteLine($"{m1}MB\n{m2}MB\n{m3}MB");
         }
     }
 }

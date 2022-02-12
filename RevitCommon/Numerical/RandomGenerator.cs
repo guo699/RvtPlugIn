@@ -13,11 +13,5 @@ namespace RevitCommon.Numerical
         {
             _random = new Random(seed);
         }
-
-        public NDArray<double> Normal(double a,double b,int count)
-        {
-            NDArray<double> array = new NDArray<double>(count);
-            return array;
-        }
     }
 }
