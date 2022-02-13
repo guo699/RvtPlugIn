@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.Numerical.Matrix.Normal
 {
-    public partial class Mat
+    public partial struct Mat
     {
         public Mat Abs(Mat source) => MathOpr(source, Math.Abs);
         public Mat Sin(Mat source) => MathOpr(source, Math.Sin);
@@ -120,12 +120,37 @@ namespace RevitCommon.Numerical.Matrix.Normal
 
         public Mat Std(Mat source,Axis axis = Axis.H)
         {
-            return null;
+            //每行求方差，返回一个列向量
+            if(axis == Axis.H)
+            {
+                Mat ret = new Mat(source.Shape.Row, 1);
+                for (int i = 0; i < source.Shape.Row; i++)
+                {
+                    double sum = 0.0;
+                    for (int j = 0; j < source.Shape.Col; j++)
+                    {
+                        sum += source[i, j];
+                    }
+                    double mean = sum / source.Shape.Col;
+                    double stdsum = 0.0;
+                    for (int j = 0; j < source.Shape.Col; j++)
+                    {
+                        stdsum += Math.Pow(source[i, j] - mean, 2);
+                    }
+                    ret[i, 0] = stdsum;
+                }
+                return ret;
+            }
+            //每列求方差，返回一个行向量
+            else
+            {
+                return default(Mat);
+            }
         }
 
         public Mat Var(Mat source,Axis axis = Axis.H)
         {
-            return null;
+            return default(Mat);
         }
 
         /// <summary>
@@ -133,7 +158,7 @@ namespace RevitCommon.Numerical.Matrix.Normal
         /// </summary>
         public Mat Cov(Mat source)
         {
-            return null;
+            return default(Mat);
         }
 
         /// <summary>
@@ -149,7 +174,7 @@ namespace RevitCommon.Numerical.Matrix.Normal
         /// </summary>
         public Mat Inv(Mat source)
         {
-            return null;
+            return default(Mat);
         }
 
         /// <summary>

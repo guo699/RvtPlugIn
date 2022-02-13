@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.Numerical.Matrix.Normal
 {
-    public partial class Mat
+    public partial struct Mat
     {
         public MatTypeCode Kind
         {

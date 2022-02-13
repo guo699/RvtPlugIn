@@ -6,8 +6,21 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.Numerical.Matrix.Normal
 {
-    public partial class Mat
+    public partial struct Mat
     {
+        public static Mat Normal(double u,double std,Shape shape)
+        {
+            return default(Mat);
+        }
 
+        public static Mat Unique(double min,double max,Shape shape)
+        {
+            return default(Mat);
+        }
+
+        public static Mat RandInt(double min,double max,Shape shape)
+        {
+            return default(Mat);
+        }
     }
 }

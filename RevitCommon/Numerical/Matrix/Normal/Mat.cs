@@ -10,7 +10,7 @@ namespace RevitCommon.Numerical.Matrix.Normal
     /// <summary>
     /// 非泛型二维矩阵
     /// </summary>
-    public sealed partial class Mat : IDisposable, IMat
+    public partial struct Mat //: IDisposable, IMat
     {
         private UnmgdMemoryBlock<double> MemoryStorage;
         private Shape _shape;
@@ -40,7 +40,7 @@ namespace RevitCommon.Numerical.Matrix.Normal
         }
         public double this[int row, int col]
         {
-            get{ return MemoryStorage[_shape.Row * row + col];}
+            get{ return MemoryStorage[_shape.Col * row + col];}
             set{ MemoryStorage[_shape.Col * row + col] = value;}
         }
         public Mat this[int index,Axis axis = Axis.H]
@@ -94,9 +94,9 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             MemoryStorage.Free();
         }
-        ~Mat()
-        {
-            MemoryStorage.Free();
-        }
+        //~Mat()
+        //{
+        //    MemoryStorage.Free();
+        //}
     }
 }

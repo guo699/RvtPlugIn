@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.Numerical.Matrix.Normal
 {
-    public partial class Mat
+    public partial struct Mat
     {
         /// <summary>
         /// 矩阵加标量
@@ -32,7 +32,7 @@ namespace RevitCommon.Numerical.Matrix.Normal
             Mat ret = new Mat(left.Shape);
             if(right.IsScalar())
             {
-                return left * right[0, 0];
+                return left + right[0, 0];
             }
             else if(right.IsRowVector())
             {
@@ -67,6 +67,65 @@ namespace RevitCommon.Numerical.Matrix.Normal
                     for (int j = 0; j < left.Shape.Col; j++)
                     {
                         ret[i, j] = left[i, j] + right[i, j];
+                    }
+                }
+            }
+            return ret;
+        }
+
+        public static Mat operator -(Mat left, double scalar)
+        {
+            Mat ret = new Mat(left.Shape);
+            for (int i = 0; i < left.Shape.Row; i++)
+            {
+                for (int j = 0; j < left.Shape.Col; j++)
+                {
+                    ret[i, j] = left[i, j] - scalar;
+                }
+            }
+            return ret;
+        }
+
+        public static Mat operator -(Mat left, Mat right)
+        {
+            Mat ret = new Mat(left.Shape);
+            if (right.IsScalar())
+            {
+                return left - right[0, 0];
+            }
+            else if (right.IsRowVector())
+            {
+                if (left.Shape.Col != right.Shape.Col)
+                    throw new NotSupportedException("矩阵列数不相符");
+                for (int i = 0; i < left.Shape.Row; i++)
+                {
+                    for (int j = 0; j < left.Shape.Col; j++)
+                    {
+                        ret[i, j] = left[i, j] - right[0, j];
+                    }
+                }
+            }
+            else if (right.IsColVector())
+            {
+                if (left.Shape.Row != right.Shape.Row)
+                    throw new NotSupportedException("矩阵行数不相符");
+                for (int i = 0; i < left.Shape.Row; i++)
+                {
+                    for (int j = 0; j < left.Shape.Col; j++)
+                    {
+                        ret[i, j] = left[i, j] - right[i, 0];
+                    }
+                }
+            }
+            else if (right.IsMatrix())
+            {
+                if (left.Shape.Equals(right.Shape))
+                    throw new NotSupportedException();
+                for (int i = 0; i < left.Shape.Row; i++)
+                {
+                    for (int j = 0; j < left.Shape.Col; j++)
+                    {
+                        ret[i, j] = left[i, j] - right[i, j];
                     }
                 }
             }
@@ -157,6 +216,34 @@ namespace RevitCommon.Numerical.Matrix.Normal
                 }
                 return ret;
             }
+        }
+        /// <summary>
+        /// 若干个矩阵水平方向叠加
+        /// </summary>
+        public Mat HStack(params Mat[] mats)
+        {
+            int[] rowls= mats.Select(n => n.Shape.Row).ToArray();
+            int[] colls = mats.Select(n => n.Shape.Col).ToArray();
+            if (!rowls.All(n => n == rowls[0]))
+                throw new NotSupportedException("矩阵行数不一致");
+            int sumcol = colls.Sum();
+
+            Mat ret = new Mat(rowls[0],sumcol);
+            int col = 0;
+            int catcol = 0;
+            for (int i = 0; i < colls.Length; i++)
+            {
+                col = colls[i];
+                for (int j = 0; j < rowls[0]; j++)
+                {
+                    for (int k = 0; k < col; k++)
+                    {
+                        ret[j, catcol + k] = mats[i][j, k];
+                    }
+                }
+                catcol += col;
+            }
+            return ret;
         }
     }
 }
