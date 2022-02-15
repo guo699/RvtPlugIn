@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.Numerical.Matrix.Normal
 {
-    public partial struct Mat
+    public partial class Mat
     {
         /// <summary>
         /// 矩阵加标量

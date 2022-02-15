@@ -42,12 +42,13 @@ namespace ConsoleTest
         public unsafe static extern Point* GetPoint();
         static unsafe void Main(string[] args)
         {
-            Console.WriteLine(sizeof(Shape));
-            Console.WriteLine(sizeof(Point));
-            Console.WriteLine(Unsafe.SizeOf<Mat>());
-            Console.WriteLine(Unsafe.SizeOf<StringBuilder>());
-            
+            Mat mat = new Mat(1000, 1000);
+            double t = SysHelper.GetRunTime(() => {
+                var r = mat* mat;
+            });
+            Console.WriteLine(t);
         }
+
         
     }
 }

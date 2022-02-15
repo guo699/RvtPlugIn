@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.Numerical.Matrix.Normal
 {
-    public partial struct Mat
+    public partial class Mat
     {
         public static Mat Normal(double u,double std,Shape shape)
         {

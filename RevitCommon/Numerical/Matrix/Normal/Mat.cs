@@ -10,7 +10,7 @@ namespace RevitCommon.Numerical.Matrix.Normal
     /// <summary>
     /// 非泛型二维矩阵
     /// </summary>
-    public partial struct Mat //: IDisposable, IMat
+    public partial class Mat : IDisposable, IMat
     {
         private UnmgdMemoryBlock<double> MemoryStorage;
         private Shape _shape;
@@ -94,9 +94,9 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             MemoryStorage.Free();
         }
-        //~Mat()
-        //{
-        //    MemoryStorage.Free();
-        //}
+        ~Mat()
+        {
+            MemoryStorage.Free();
+        }
     }
 }
