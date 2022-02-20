@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DirectGraphicsUtility.Model
+namespace RevitCommon.DirectGraphics.Model
 {
     class CCude
     {

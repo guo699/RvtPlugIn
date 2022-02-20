@@ -117,7 +117,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
                 return ret;
             }
         }
-
         public Mat Std(Mat source,Axis axis = Axis.H)
         {
             //每行求方差，返回一个列向量
@@ -147,12 +146,10 @@ namespace RevitCommon.Numerical.Matrix.Normal
                 return default(Mat);
             }
         }
-
         public Mat Var(Mat source,Axis axis = Axis.H)
         {
             return default(Mat);
         }
-
         /// <summary>
         /// 协方差
         /// </summary>
@@ -160,7 +157,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             return default(Mat);
         }
-
         /// <summary>
         /// 计算行列式
         /// </summary>
@@ -168,7 +164,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             return null;
         }
-
         /// <summary>
         /// 计算逆矩阵
         /// </summary>
@@ -176,7 +171,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             return default(Mat);
         }
-
         /// <summary>
         /// 计算特征值和特征向量
         /// </summary>

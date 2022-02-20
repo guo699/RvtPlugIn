@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.ML
 {
-    public class KNN:ISupervised
+    public class LinearRegression: ISupervised
     {
     }
 }

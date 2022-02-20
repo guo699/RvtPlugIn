@@ -72,7 +72,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
             }
             return ret;
         }
-
         public static Mat operator -(Mat left, double scalar)
         {
             Mat ret = new Mat(left.Shape);
@@ -85,7 +84,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
             }
             return ret;
         }
-
         public static Mat operator -(Mat left, Mat right)
         {
             Mat ret = new Mat(left.Shape);
@@ -244,6 +242,15 @@ namespace RevitCommon.Numerical.Matrix.Normal
                 catcol += col;
             }
             return ret;
+        }
+        public double[] ToArray()
+        {
+            double[] array = new double[_shape.Size];
+            for (int i = 0; i < _shape.Size; i++)
+            {
+                array[i] = MemoryStorage[i];
+            }
+            return array;
         }
     }
 }

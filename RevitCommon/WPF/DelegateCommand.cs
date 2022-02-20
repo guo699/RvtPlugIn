@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+#pragma warning disable CS0067
+
 namespace RevitCommon.WPF
 {
     public sealed class DelegateCommand : ICommand

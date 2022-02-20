@@ -12,12 +12,10 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             return default(Mat);
         }
-
         public static Mat Unique(double min,double max,Shape shape)
         {
             return default(Mat);
         }
-
         public static Mat RandInt(double min,double max,Shape shape)
         {
             return default(Mat);

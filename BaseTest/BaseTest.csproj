@@ -83,7 +83,6 @@
   <ItemGroup>
     <Compile Include="Command\AboutCurve.cs" />
     <Compile Include="Command\RandomText.cs" />
-    <Compile Include="Common\TransactionDelegate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

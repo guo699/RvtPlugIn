@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitCommon.ML
+namespace RevitCommon.DirectGraphics.Model
 {
-    public class KNN:ISupervised
+    class CMesh
     {
+        public List<CTriangular> Triangulars { get; set; }
     }
 }

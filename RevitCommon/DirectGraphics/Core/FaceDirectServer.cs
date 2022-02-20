@@ -5,10 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RevitCommon.DirectGraphics.Model;
 
-using DirectGraphicsUtility.Model;
-
-namespace DirectGraphicsUtility.Core
+namespace RevitCommon.DirectGraphics.Core
 {
     class FaceDirectServer:DirectContextServer
     {

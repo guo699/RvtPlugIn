@@ -8,7 +8,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.DirectContext3D;
 using Autodesk.Revit.DB.ExternalService;
 
-namespace DirectGraphicsUtility.Core
+namespace RevitCommon.DirectGraphics.Core
 {
     class CurveDirectServer:DirectContextServer
     {

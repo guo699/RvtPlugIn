@@ -1,12 +1,12 @@
 ﻿using Autodesk.Revit.DB;
-using DirectGraphicsUtility.Numbers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RevitCommon.Numerical.Matrix.Normal;
 
-namespace DirectGraphicsUtility.Model
+namespace RevitCommon.DirectGraphics.Model
 {
     class CSurface
     {
@@ -32,8 +32,8 @@ namespace DirectGraphicsUtility.Model
         }
         private void Initial()
         {
-            _xthicks = nc.linspace(_xdomain.Item1, _xdomain.Item2, _xnums);
-            _ythicks = nc.linspace(_ydomain.Item1, _ydomain.Item2, _ynums);
+            _xthicks = Mat.LinSpace(_xdomain.Item1, _xdomain.Item2, _xnums).ToArray();
+            _ythicks = Mat.LinSpace(_ydomain.Item1, _ydomain.Item2, _ynums).ToArray();
             for (int i = 0; i < _xthicks.Length; i++)
             {
                 for (int j = 0; j < _ythicks.Length; j++)
@@ -56,11 +56,7 @@ namespace DirectGraphicsUtility.Model
         }
         private double Function(double x,double y)
         {
-            //return (Math.Pow(x, 3) + Math.Pow(y, 3)) / 50.0;
-            //return 0;
             return Math.Pow(Math.Sin(x), 2) + Math.Pow(Math.Cos(y), 2);
-            //return Math.Sin(x) + Math.Cos(y);
-            //return Math.Sin(Math.Pow(x, 2)) + Math.Cos(Math.Pow(y, 2));
         }
     }
 }

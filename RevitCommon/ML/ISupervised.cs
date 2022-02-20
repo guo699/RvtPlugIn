@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.ML
 {
-    public class KNN:ISupervised
+    public interface ISupervised
     {
+
     }
 }

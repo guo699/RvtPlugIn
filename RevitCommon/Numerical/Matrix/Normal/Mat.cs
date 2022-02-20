@@ -1,5 +1,6 @@
 ﻿using RevitCommon.Numerical.Matrix.Basic;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ namespace RevitCommon.Numerical.Matrix.Normal
     /// <summary>
     /// 非泛型二维矩阵
     /// </summary>
-    public partial class Mat : IDisposable, IMat
+    public partial class Mat : IDisposable, IMat,IEnumerable
     {
-        private UnmgdMemoryBlock<double> MemoryStorage;
+        internal UnmgdMemoryBlock<double> MemoryStorage;
         private Shape _shape;
         public Shape Shape { get => _shape; set => throw new NotImplementedException(); }
         public Mat(int row, int col, double fillvalue = 0)
@@ -94,9 +95,42 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             MemoryStorage.Free();
         }
+
+        public IEnumerator GetEnumerator()
+        {
+            return new MatEnumerator(this);
+        }
+
         ~Mat()
         {
             MemoryStorage.Free();
+        }
+    }
+
+    class MatEnumerator : IEnumerator
+    {
+        private Mat _mat;
+        private int _index;
+        public object Current => _mat.MemoryStorage[_index];
+
+        public MatEnumerator(Mat mat)
+        {
+            this._mat = mat;
+            this._index = -1;
+        }
+        public bool MoveNext()
+        {
+            if(_index > -1 && _index < _mat.Shape.Size)
+            {
+                _index++;
+                return true;
+            }
+            return false;
+        }
+
+        public void Reset()
+        {
+            _index = -1;
         }
     }
 }

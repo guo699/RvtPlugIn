@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DirectGraphicsUtility.Model
+namespace RevitCommon.ML
 {
-    class CMesh
+    public class LogisticRegression: ISupervised
     {
-        public List<CTriangular> Triangulars { get; set; }
     }
 }
