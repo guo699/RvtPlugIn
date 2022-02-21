@@ -27,5 +27,14 @@
     <ClInclude Include="Core\Types.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Core\Constants.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Slice.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector\Vec2.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

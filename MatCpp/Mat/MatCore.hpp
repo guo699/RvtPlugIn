@@ -2,6 +2,7 @@
 #include <xmemory>
 
 #include "..\Utils\num2str.hpp"
+#include "..\Core\Types.hpp"
 
 namespace matcpp
 {
@@ -9,6 +10,14 @@ namespace matcpp
 	class Mat
 	{
 	public:
+		Mat() = default;
+
+	private:
+		using value_type = dtype;
+		using allocator_type = Allocator;
+		using size_type = uint32;
+		using reference = dtype&;
+		using const_reference = const dtype&;
 
 	};
 }

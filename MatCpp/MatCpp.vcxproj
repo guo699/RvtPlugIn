@@ -139,10 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Core\Constants.hpp" />
     <ClInclude Include="Core\Shape.hpp" />
+    <ClInclude Include="Core\Slice.hpp" />
     <ClInclude Include="Core\Types.hpp" />
     <ClInclude Include="Mat\MatCore.hpp" />
     <ClInclude Include="Utils\num2str.hpp" />
+    <ClInclude Include="Vector\Vec2.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

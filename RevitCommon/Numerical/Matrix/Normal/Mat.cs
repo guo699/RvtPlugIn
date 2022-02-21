@@ -95,10 +95,14 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             MemoryStorage.Free();
         }
-
         public IEnumerator GetEnumerator()
         {
             return new MatEnumerator(this);
+        }
+
+        public static implicit operator Mat(double[,] array)
+        {
+            return new Mat(array);
         }
 
         ~Mat()
@@ -112,7 +116,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
         private Mat _mat;
         private int _index;
         public object Current => _mat.MemoryStorage[_index];
-
         public MatEnumerator(Mat mat)
         {
             this._mat = mat;
@@ -127,7 +130,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
             }
             return false;
         }
-
         public void Reset()
         {
             _index = -1;

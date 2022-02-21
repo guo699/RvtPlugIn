@@ -15,33 +15,24 @@ using RevitCommon.Utilitis;
 
 namespace ConsoleTest
 {
-    public static unsafe class Heap<T> where T:unmanaged
-    {
-        public static T* New()
-        {
-            T* ELEM = (T*)Marshal.AllocHGlobal(sizeof(T)).ToPointer();
-            return ELEM;
-        }
-    }
-
-    public struct Point
-    {
-        public double X;
-        public double Y;
-        public double Z;
-        public Point(double x,double y,double z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
-    }
-
     class Program
     {
         static unsafe void Main(string[] args)
         {
+            Mat mat = new double[1, 10] { {9,4,7,1,3,5,2,6,0,8 } };
 
+            Mat indices = Mat.ArgSort(mat);
+
+            Console.WriteLine(mat.ToString());
+            Console.WriteLine(indices.ToString());
+
+            string ss = "";
+            for (int i = 0; i < 10; i++)
+            {
+                ss += mat[0, (int)indices[0,i]];
+                ss += ",";
+            }
+            Console.WriteLine(ss);
         }       
     }
 }

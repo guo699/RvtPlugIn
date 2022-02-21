@@ -16,7 +16,25 @@ namespace RevitCommon.Numerical.Matrix
         {
             Row = row;
             Col = col;
-            size = ((long)row) * ((long)col);
+            size = row * col;
+        }
+
+        /// <summary>
+        /// if 0 return Row,if 1 return Col
+        /// </summary>
+        /// <param name="index">o 0 or 1</param>
+        /// <returns>Row or Col</returns>
+        public int this[int index]
+        {
+            get
+            {
+                if (index == 0)
+                    return Row;
+                else if (index == 1)
+                    return Col;
+                else
+                    throw new IndexOutOfRangeException();
+            }
         }
         public override string ToString()
         {

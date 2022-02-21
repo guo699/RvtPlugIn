@@ -20,5 +20,9 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             return default(Mat);
         }
+        public static void Shuffle(Mat source)
+        {
+            Random random = new Random();
+        }
     }
 }
