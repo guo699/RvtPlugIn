@@ -81,7 +81,7 @@
     <Compile Include="Extensions\LinqEx.cs" />
     <Compile Include="Extensions\XYZEx.cs" />
     <Compile Include="ML\ISupervised.cs" />
-    <Compile Include="ML\IUnsupervised.cs" />
+    <Compile Include="ML\Iunsupervised.cs" />
     <Compile Include="ML\KNN.cs" />
     <Compile Include="ML\LinearRegression.cs" />
     <Compile Include="ML\LogisticRegression.cs" />

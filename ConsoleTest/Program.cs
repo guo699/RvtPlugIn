@@ -19,20 +19,21 @@ namespace ConsoleTest
     {
         static unsafe void Main(string[] args)
         {
-            Mat mat = new double[1, 10] { {9,4,7,1,3,5,2,6,0,8 } };
-
-            Mat indices = Mat.ArgSort(mat);
-
-            Console.WriteLine(mat.ToString());
-            Console.WriteLine(indices.ToString());
-
-            string ss = "";
-            for (int i = 0; i < 10; i++)
+            for (int m = 0; m < 300; m++)
             {
-                ss += mat[0, (int)indices[0,i]];
-                ss += ",";
+                Random r = new Random(m);
+                int[] arr = Enumerable.Range(0, 50).ToArray();
+
+                for (int i = arr.Length-1; i > 0; i--)
+                {
+                    int k = r.Next(0, i+1);
+                    int temp = arr[k];
+                    arr[k] = arr[i];
+                    arr[i] = temp;
+                }
+                Console.WriteLine(String.Join(" ",arr));
             }
-            Console.WriteLine(ss);
+
         }       
     }
 }
