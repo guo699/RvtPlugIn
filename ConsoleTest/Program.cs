@@ -19,23 +19,12 @@ namespace ConsoleTest
     {
         static unsafe void Main(string[] args)
         {
-            {
-                Console.WriteLine(GetMem());
-                using (Mat M = new Mat(128 * 20, 1024 * 40))
-                {
 
-                }
-
-                //List<double> ls = new List<double>(128 * 20 * 40 * 1024);
-                Console.WriteLine(GetMem());
-                M.Dispose();
-                Console.WriteLine(GetMem());
-            }
         } 
 
         static long GetMem()
         {
-            return  Process.GetCurrentProcess().PrivateMemorySize64 / 1024/1024;
+            return Process.GetCurrentProcess().PrivateMemorySize64 / 1024/1024;
         }
         
     }

@@ -252,7 +252,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
             }
             return array;
         }
-
         /// <summary>
         /// 拷贝副本
         /// </summary>
