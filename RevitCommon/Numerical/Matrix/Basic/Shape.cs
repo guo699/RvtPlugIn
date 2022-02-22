@@ -36,6 +36,12 @@ namespace RevitCommon.Numerical.Matrix
                     throw new IndexOutOfRangeException();
             }
         }
+
+        public static implicit operator Shape((int row,int col) shape)
+        {
+            return new Shape(shape.row, shape.col);
+        }
+
         public override string ToString()
         {
             return $"({Row},{Col})";

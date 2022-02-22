@@ -107,6 +107,7 @@
     <Compile Include="Numerical\Matrix\Normal\Math\Mat.Operator.cs" />
     <Compile Include="Numerical\Matrix\Normal\Math\Mat.Properties.cs" />
     <Compile Include="Numerical\Matrix\Normal\Math\Mat.Random.cs" />
+    <Compile Include="Numerical\Matrix\Normal\Math\Mat.Slice.cs" />
     <Compile Include="Numerical\Matrix\Normal\Math\Mat.Sort.cs" />
     <Compile Include="Numerical\Matrix\Normal\Math\Mat.Transform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,14 +8,14 @@ namespace RevitCommon.Numerical.Matrix.Normal
 {
     public partial class Mat
     {
-        public Mat T(Mat source)
+        public Mat T()
         {
-            Mat ret = new Mat(source.Shape.Col, source.Shape.Row);
-            for (int i = 0; i < source.Shape.Row; i++)
+            Mat ret = new Mat(this.Shape.Col, this.Shape.Row);
+            for (int i = 0; i < this.Shape.Row; i++)
             {
-                for (int j = 0; j < source.Shape.Col; j++)
+                for (int j = 0; j < this.Shape.Col; j++)
                 {
-                    ret[j, i] = source[i, j];
+                    ret[j, i] = this[i, j];
                 }
             }
             return ret;

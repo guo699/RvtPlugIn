@@ -174,9 +174,10 @@ namespace RevitCommon.Numerical.Matrix.Normal
         /// <summary>
         /// 计算特征值和特征向量
         /// </summary>
-        public (double,Mat)[] Eig(Mat source)
+        public void Eig(Mat source,out Mat vectors,out Mat values)
         {
-            return null;
+            vectors = null;
+            values = null;
         }
         private Mat MathOpr(Mat source,Func<double,double> func)
         {
@@ -190,5 +191,25 @@ namespace RevitCommon.Numerical.Matrix.Normal
             }
             return ret;
         }
+
+        /// <summary>
+        /// 所有元素的累加和
+        /// </summary>
+        /// <returns></returns>
+        public double CumSum()
+        {
+            return 0;
+        }
+
+        /// <summary>
+        /// 所有元素的累计积
+        /// </summary>
+        /// <returns></returns>
+        public double CumProd()
+        {
+            return 0;
+        }
+
+
     }
 }

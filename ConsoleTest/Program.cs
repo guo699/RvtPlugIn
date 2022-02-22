@@ -19,7 +19,12 @@ namespace ConsoleTest
     {
         static unsafe void Main(string[] args)
         {
+            Mat mat = Mat.RandInt(0, 100, (1,20));
+            Mat indices = Mat.ArgSort(mat, Axis.H);
 
+            Console.WriteLine(mat);
+            Console.WriteLine(indices);
+            Console.WriteLine(mat);
         } 
 
         static long GetMem()

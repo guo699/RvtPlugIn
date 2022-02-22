@@ -184,7 +184,7 @@ namespace RevitCommon.Numerical.Matrix.Normal
         /// <param name="source">矩阵</param>
         /// <param name="axis">若axis == Axis.H,结果返回一个列向量</param>
         /// <returns></returns>
-        public static Mat Sum(Mat source, Axis axis)
+        public static Mat Sum(Mat source, Axis axis = Axis.H)
         {
             if (axis == Axis.H)
             {
