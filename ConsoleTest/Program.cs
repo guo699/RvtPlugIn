@@ -19,21 +19,24 @@ namespace ConsoleTest
     {
         static unsafe void Main(string[] args)
         {
-            for (int m = 0; m < 300; m++)
             {
-                Random r = new Random(m);
-                int[] arr = Enumerable.Range(0, 50).ToArray();
-
-                for (int i = arr.Length-1; i > 0; i--)
+                Console.WriteLine(GetMem());
+                using (Mat M = new Mat(128 * 20, 1024 * 40))
                 {
-                    int k = r.Next(0, i+1);
-                    int temp = arr[k];
-                    arr[k] = arr[i];
-                    arr[i] = temp;
-                }
-                Console.WriteLine(String.Join(" ",arr));
-            }
 
-        }       
+                }
+
+                //List<double> ls = new List<double>(128 * 20 * 40 * 1024);
+                Console.WriteLine(GetMem());
+                M.Dispose();
+                Console.WriteLine(GetMem());
+            }
+        } 
+
+        static long GetMem()
+        {
+            return  Process.GetCurrentProcess().PrivateMemorySize64 / 1024/1024;
+        }
+        
     }
 }

@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -89,6 +90,7 @@
     <Compile Include="Numerical\Matrix\Basic\Axis.cs" />
     <Compile Include="Numerical\Matrix\Basic\MatTypeCode.cs" />
     <Compile Include="Numerical\Matrix\Basic\Slice.cs" />
+    <Compile Include="Numerical\Matrix\Basic\ThrowHelper.cs" />
     <Compile Include="Numerical\Matrix\Generic\Contracts.cs" />
     <Compile Include="Numerical\Matrix\Generic\Creation\Mat.Creation.cs" />
     <Compile Include="Numerical\Matrix\Basic\IMat.cs" />

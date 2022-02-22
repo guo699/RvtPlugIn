@@ -147,6 +147,9 @@
     <ClInclude Include="Utils\num2str.hpp" />
     <ClInclude Include="Vector\Vec2.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Test.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

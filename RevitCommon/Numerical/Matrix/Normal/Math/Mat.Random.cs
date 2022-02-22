@@ -18,7 +18,8 @@ namespace RevitCommon.Numerical.Matrix.Normal
         }
         public static Mat RandInt(double min,double max,Shape shape)
         {
-            return default(Mat);
+            Random random = new Random();
+            return null;
         }
         public static void Shuffle(Mat source)
         {

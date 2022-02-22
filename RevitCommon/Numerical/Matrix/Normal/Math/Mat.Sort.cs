@@ -9,6 +9,12 @@ namespace RevitCommon.Numerical.Matrix.Normal
 {
     public partial class Mat
     {
+        /// <summary>
+        /// 排序，并返回索引矩阵
+        /// </summary>
+        /// <param name="source">输入矩阵</param>
+        /// <param name="axis">对每行或每列进行排序</param>
+        /// <returns>索引矩阵</returns>
         public static Mat ArgSort(Mat source,Axis axis = Axis.H)
         {
             Mat indices = new Mat(source.Shape);
@@ -16,10 +22,9 @@ namespace RevitCommon.Numerical.Matrix.Normal
             if(source.IsRowVector())
             {
                 for (int i = 0; i < source.Shape.Col; i++)
-                {
                     indices[0, i] = i;
-                }
 
+                double itemp = 0;
                 double temp = 0;
                 for (int i = source.Shape.Col-1; i >= 0; i--)
                 {
@@ -27,9 +32,14 @@ namespace RevitCommon.Numerical.Matrix.Normal
                     {
                         if(source[0,j] > source[0,j+1])
                         {
-                            temp = indices[0, j];
+                            //交换索引
+                            itemp = indices[0, j];
                             indices[0, j] = indices[0, j + 1];
-                            indices[0, j + 1] = temp;
+                            indices[0, j + 1] = itemp;
+                            //交换值
+                            temp = source[0, j];
+                            source[0, j] = source[0, j + 1];
+                            source[0, j + 1] = temp;
                         }
                     }
                 }

@@ -252,5 +252,17 @@ namespace RevitCommon.Numerical.Matrix.Normal
             }
             return array;
         }
+
+        /// <summary>
+        /// 拷贝副本
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public Mat Copy()
+        {
+            Mat clone = new Mat(this.Shape);
+            UnmgdMemoryBlock<double>.Copy(this.MemoryStorage, clone.MemoryStorage);
+            return clone;
+        }
     }
 }

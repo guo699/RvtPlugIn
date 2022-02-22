@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RevitCommon.Numerical.Matrix
 {
@@ -13,7 +9,6 @@ namespace RevitCommon.Numerical.Matrix
         private void* _voidAddress;
         private IntPtr _ptr;
         private long _itemCount;
-
         public long ItemCount { get { return _itemCount; } }
         public bool Released { get; set; }
         public UnmgdMemoryBlock(long itemCount)
@@ -25,7 +20,6 @@ namespace RevitCommon.Numerical.Matrix
             this._itemCount = itemCount;
             this.Released = false;
         }
-
         public T this[long index]
         {
             get 
@@ -41,13 +35,21 @@ namespace RevitCommon.Numerical.Matrix
                 _address[index] = value; 
             }
         }
-
         public void Free()
         {
             if (Released)
                 return;
             Released = true;
             Marshal.FreeHGlobal(_ptr);
+        }
+        internal static void Copy(UnmgdMemoryBlock<T> src,UnmgdMemoryBlock<T> dst)
+        {
+            if (src.ItemCount != dst.ItemCount)
+                throw new ArgumentException("两个内存块必须同等尺寸");
+            for (int i = 0; i < src.ItemCount; i++)
+            {
+                dst[i] = src[i];
+            }
         }
     }
 }
