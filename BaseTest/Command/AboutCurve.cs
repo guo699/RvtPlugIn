@@ -8,6 +8,8 @@ using RevitCommon.Utilitis;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace BaseTest.Command
 {
@@ -23,33 +25,11 @@ namespace BaseTest.Command
             UIDoc = commandData.Application.ActiveUIDocument;
             Doc = UIDoc.Document;
 
-            Reference r = UIDoc.Selection.PickObject(ObjectType.Element);
-            DetailCurve dcurve = Doc.GetElement(r) as DetailCurve;
-            Curve curve = dcurve.GeometryCurve;
-            IList<XYZ> points = curve.SamplingPoints(20);
-            //string str = XYZToCSV.ToString(points);
-
-            //using(StreamWriter writer = new StreamWriter(path))
-            //{
-            //    writer.Write(str);
-            //}
-
-            XYZ v1 = new XYZ(-0.98894914, 0.1482552, 0);
-            XYZ v2 = new XYZ(-0.1482552, -0.98894914, 0);
-
-            XYZ pnt = curve.GetEndPoint(0);
-            Line l1 = Line.CreateBound(pnt, pnt.Add(-v1*curve.Length));
-            Line l2 = Line.CreateBound(pnt, pnt.Add(-v2*curve.Length));
-
-            TransactionInvoker.Action(Doc, "XX", ()=> {
-
-                Doc.Create.NewDetailCurve(Doc.ActiveView, l1);
-                Doc.Create.NewDetailCurve(Doc.ActiveView, l2);
-            });
-            foreach (var item in points.ToList())
-            {
-                item.DrawCircle(Doc, 10.0.MM2Feet());
-            }
+            Window window = new Window();
+            RichTextBox box = new RichTextBox();
+            box.Document = new System.Windows.Documents.FlowDocument();
+            window.Content = box;
+            window.Show();
 
             return Result.Succeeded;
         }

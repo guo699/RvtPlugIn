@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using RevitCommon.Numerical.Matrix;
 using RevitCommon.Numerical.Matrix.Basic;
+using RevitCommon.Numerical.Matrix.Basic.Datasets;
 using RevitCommon.Numerical.Matrix.Normal;
 using RevitCommon.Utilitis;
 
@@ -19,12 +20,10 @@ namespace ConsoleTest
     {
         static unsafe void Main(string[] args)
         {
-            Mat mat = Mat.RandInt(0, 100, (1,20));
-            Mat indices = Mat.ArgSort(mat, Axis.H);
+            Bunch iris = DataLoader.LoadBreastCancer();
 
-            Console.WriteLine(mat);
-            Console.WriteLine(indices);
-            Console.WriteLine(mat);
+            Console.WriteLine(iris[BunchKey.Data]);
+            Console.WriteLine(iris[BunchKey.Target]);
         } 
 
         static long GetMem()

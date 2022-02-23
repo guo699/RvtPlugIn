@@ -13,9 +13,28 @@ constexpr uint64_t sum(int start)
 		return start + sum(start - 1);
 }
 
+template<class T>
+class Mat
+{
+public:
+	Mat(int row, int col)
+	{
+		_row = row;
+		_col = col;
+	}
+
+	constexpr int size() const noexcept
+	{
+		return _row * _col;
+	}
+
+private:
+	int _row, _col;
+};
+
 int main()
 {
-	constexpr uint64_t ss = sum(500);
-	cout << ss << endl;
+	Mat<double> m(11, 12);
+	constexpr int ss = m.size();
 	return 0;
 }
