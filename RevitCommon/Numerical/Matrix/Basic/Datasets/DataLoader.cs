@@ -21,11 +21,11 @@ namespace RevitCommon.Numerical.Matrix.Basic.Datasets
             string[] targetnames = 
                 new string[3] { "setosa", "versicolor", "virginica" };
             string[] featurenames = 
-                new string[4] { "sepal length (cm)", "sepal width (cm)", "petal length (cm)", "petal width (cm)" };
+                new string[4] 
+                { "sepal length (cm)", "sepal width (cm)", "petal length (cm)", "petal width (cm)" };
             Bunch result = new Bunch(ret.Key, ret.Value, featurenames, targetnames);
             return result;
         }
-
         /// <summary>
         /// 加载红酒数据集
         /// </summary>
@@ -51,7 +51,6 @@ namespace RevitCommon.Numerical.Matrix.Basic.Datasets
             Bunch result = new Bunch(ret.Key, ret.Value, featurenames, targetnames);
             return result;
         }
-
         /// <summary>
         /// 加载波士顿房价数据集
         /// </summary>
@@ -77,7 +76,6 @@ namespace RevitCommon.Numerical.Matrix.Basic.Datasets
             Bunch result = new Bunch(ret.Key, ret.Value, featurenames, targetnames);
             return result;
         }
-
         /// <summary>
         /// 加载乳腺癌数据集
         /// </summary>
@@ -101,14 +99,13 @@ namespace RevitCommon.Numerical.Matrix.Basic.Datasets
             Bunch result = new Bunch(ret.Key, ret.Value, featurenames, targetnames);
             return result;
         }
-
         /// <summary>
         /// 加载手写数字数据集
         /// </summary>
         /// <returns></returns>
         public static Bunch LoadDigits()
         {
-            KeyValuePair<Mat, Mat> ret = CsvReader.ImportData(FileSourcePaths.Digits);
+            KeyValuePair<Mat, Mat> ret = CsvReader.ImportData(FileSourcePaths.Digits, 1797, 64);
 
             string[] targetnames =
                 new string[1] {"Number from 0 to 9"};

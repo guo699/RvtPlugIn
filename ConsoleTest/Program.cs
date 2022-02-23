@@ -20,7 +20,7 @@ namespace ConsoleTest
     {
         static unsafe void Main(string[] args)
         {
-            Bunch iris = DataLoader.LoadBreastCancer();
+            Bunch iris = DataLoader.LoadDigits();
 
             Console.WriteLine(iris[BunchKey.Data]);
             Console.WriteLine(iris[BunchKey.Target]);

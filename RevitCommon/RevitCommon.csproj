@@ -91,6 +91,7 @@
     <Compile Include="Numerical\Matrix\Basic\Datasets\Bunch.cs" />
     <Compile Include="Numerical\Matrix\Basic\Datasets\CsvReader.cs" />
     <Compile Include="Numerical\Matrix\Basic\Datasets\DataLoader.cs" />
+    <Compile Include="Numerical\Matrix\Basic\Datasets\DataProducer.cs" />
     <Compile Include="Numerical\Matrix\Basic\MatTypeCode.cs" />
     <Compile Include="Numerical\Matrix\Basic\Slice.cs" />
     <Compile Include="Numerical\Matrix\Basic\ThrowHelper.cs" />
