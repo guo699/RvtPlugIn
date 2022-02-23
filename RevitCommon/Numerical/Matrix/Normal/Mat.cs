@@ -39,35 +39,6 @@ namespace RevitCommon.Numerical.Matrix.Normal
                 }
             }
         }
-        public double this[int row, int col]
-        {
-            get{ return MemoryStorage[_shape.Col * row + col];}
-            set{ MemoryStorage[_shape.Col * row + col] = value;}
-        }
-        public Mat this[int index,Axis axis = Axis.H]
-        {
-            get
-            {
-                if(axis == Axis.H)
-                {
-                    Mat ret = new Mat(1, Shape.Col);
-                    for (int i = 0; i < Shape.Col; i++)
-                    {
-                        ret[0, i] = this[index, i];
-                    }
-                    return ret;
-                }
-                else
-                {
-                    Mat ret = new Mat(Shape.Row, 1);
-                    for (int i = 0; i < Shape.Row; i++)
-                    {
-                        ret[i, 0] = this[i, index];
-                    }
-                    return ret;
-                }
-            }
-        }
         private void FillValue(double fillvalue)
         {
             for (int i = 0; i < _shape.Size; i++)
@@ -99,12 +70,26 @@ namespace RevitCommon.Numerical.Matrix.Normal
         {
             return new MatEnumerator(this);
         }
+        public double[] ToArray()
+        {
+            double[] array = new double[_shape.Size];
+            for (int i = 0; i < _shape.Size; i++)
+            {
+                array[i] = MemoryStorage[i];
+            }
+            return array;
+        }
+        public Mat Copy()
+        {
+            Mat clone = new Mat(this.Shape);
+            UnmgdMemoryBlock<double>.Copy(this.MemoryStorage, clone.MemoryStorage);
+            return clone;
+        }
 
         public static implicit operator Mat(double[,] array)
         {
             return new Mat(array);
         }
-
         ~Mat()
         {
             MemoryStorage.Free();

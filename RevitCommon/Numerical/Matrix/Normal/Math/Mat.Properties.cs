@@ -24,21 +24,9 @@ namespace RevitCommon.Numerical.Matrix.Normal
                 else return MatTypeCode.UnKnow;
             }
         }
-        public bool IsScalar() => this.Shape.Row == 1 && this.Shape.Col == 1;
-        public bool IsRowVector()
-        {
-            return !IsScalar() && this.Shape.Row == 1;
-        }
-        public bool IsColVector()
-        {
-            return !IsScalar() && this.Shape.Col == 1;
-        }
-        /// <summary>
-        /// 矩阵行数和列数均大于1才为矩阵
-        /// </summary>
-        public bool IsMatrix()
-        {
-            return this.Shape.Col > 1 && Shape.Col > 1;
-        }
+        private bool IsScalar() => this.Shape.Row == 1 && this.Shape.Col == 1;
+        private bool IsRowVector() => !IsScalar() && this.Shape.Row == 1;
+        private bool IsColVector() => !IsScalar() && this.Shape.Col == 1;
+        private bool IsMatrix() => this.Shape.Col > 1 && Shape.Col > 1;
     }
 }

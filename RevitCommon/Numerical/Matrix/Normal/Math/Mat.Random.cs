@@ -9,7 +9,7 @@ namespace RevitCommon.Numerical.Matrix.Normal
     public partial class Mat
     {
         private static Random _random = new Random(666);
-        public void RandomSeed(int seed)
+        public static void SetRandomSeed(int seed)
         {
             _random = new Random(seed);
         }
