@@ -1,4 +1,4 @@
-﻿using RevitCommon.Numerical.Matrix.Normal;
+﻿using RevitCommon.Numerical.Matrix;
 using System;
 using System.Collections.Generic;
 using System.Linq;

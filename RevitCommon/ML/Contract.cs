@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.ML
 {
-    public interface ISupervised
+    public abstract class Contract
     {
-        void Fit(Mat X, Mat Y);
-        Mat Predict(Mat X);
-        double Score(Mat X, Mat Y);
+        public static void EnsuresFitXY(Mat X,Mat Y)
+        {
+
+        }
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitCommon.Numerical.Matrix.Normal
+namespace RevitCommon.Numerical.Matrix
 {
     public partial class Mat
     {
@@ -20,20 +21,31 @@ namespace RevitCommon.Numerical.Matrix.Normal
             }
             return ret;
         }
-        public Mat ReShape(Mat source,Shape newshape)
+        public Mat ReShape(Shape newshape)
         {
-            if (source.Shape.Size != newshape.Size)
+            if (this.Shape.Size != newshape.Size)
                 throw new NotSupportedException();
             Mat ret = new Mat(newshape);
             for (int i = 0; i < newshape.Row; i++)
             {
                 for (int j = 0; j < newshape.Col; j++)
                 {
-                    ret[i, j] = source.MemoryStorage[i * source.Shape.Col + j];
+                    ret[i, j] = this.MemoryStorage[i * this.Shape.Col + j];
                 }
             }
             return ret;
         }
+
+        public void ToFile(string path)
+        {
+            if (path == null)
+                path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\save_1.txt";
+            using(StreamWriter writer = new StreamWriter(path))
+            {
+                writer.Write(this.ToString());
+            }
+        }
+
         /// <summary>
         /// 若干个矩阵水平方向叠加
         /// </summary>

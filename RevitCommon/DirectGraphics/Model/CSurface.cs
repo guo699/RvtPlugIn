@@ -1,10 +1,10 @@
 ﻿using Autodesk.Revit.DB;
+using RevitCommon.Numerical.Matrix;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RevitCommon.Numerical.Matrix.Normal;
 
 namespace RevitCommon.DirectGraphics.Model
 {

@@ -1,32 +1,36 @@
-﻿using RevitCommon.Numerical.Matrix.Basic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitCommon.Numerical.Matrix.Normal
+namespace RevitCommon.Numerical.Matrix
 {
     public partial class Mat
     {
-        public Mat Abs(Mat source) => MathOpr(source, Math.Abs);
-        public Mat Sin(Mat source) => MathOpr(source, Math.Sin);
-        public Mat Cos(Mat source) => MathOpr(source, Math.Cos);
-        public Mat Tan(Mat source) => MathOpr(source, Math.Tan);
-        public Mat Log(Mat source) => MathOpr(source, Math.Log);
-        public Mat Min(Mat source,Axis axis = Axis.H)
+        public Mat Abs() => MathOpr(this, Math.Abs);
+        public Mat Sin() => MathOpr(this, Math.Sin);
+        public Mat Cos() => MathOpr(this, Math.Cos);
+        public Mat Tan() => MathOpr(this, Math.Tan);
+        public Mat Log() => MathOpr(this, Math.Log);
+        /// <summary>
+        /// 求矩阵每行或每列的最小值
+        /// </summary>
+        /// <param name="axis">指定为 Axis.H 时，针对每行取最小值，结果返回一个列向量。</param>
+        /// <returns></returns>
+        public Mat Min(Axis axis = Axis.H)
         {
             //计算每行的最小值，返回一个列向量
             if(axis == Axis.H)
             {
-                Mat ret = new Mat(source.Shape.Row, 1);
-                for (int i = 0; i < source.Shape.Row; i++)
+                Mat ret = new Mat(Shape.Row, 1);
+                for (int i = 0; i < Shape.Row; i++)
                 {
                     double minvalue = double.MaxValue;
-                    for (int j = 0; j < source.Shape.Col; j++)
+                    for (int j = 0; j < Shape.Col; j++)
                     {
-                        if (minvalue < source[i, j])
-                            minvalue = source[i, j];
+                        if (minvalue < this[i, j])
+                            minvalue = this[i, j];
                     }
                     ret[i, 1] = minvalue;
                 }
@@ -35,33 +39,33 @@ namespace RevitCommon.Numerical.Matrix.Normal
             //计算每列的最小值，返回一个行向量
             else
             {
-                Mat ret = new Mat(1, source.Shape.Col);
-                for (int i = 0; i < source.Shape.Col; i++)
+                Mat ret = new Mat(1, this.Shape.Col);
+                for (int i = 0; i < this.Shape.Col; i++)
                 {
                     double minvalue = double.MaxValue;
-                    for (int j = 0; j < source.Shape.Row; j++)
+                    for (int j = 0; j < this.Shape.Row; j++)
                     {
-                        if (minvalue < source[j, i])
-                            minvalue = source[j, i];
+                        if (minvalue < this[j, i])
+                            minvalue = this[j, i];
                     }
                     ret[1, i] = minvalue;
                 }
                 return ret;
             }
         }
-        public Mat Max(Mat source, Axis axis = Axis.H)
+        public Mat Max(Axis axis = Axis.H)
         {
             //计算每行的最大值，返回一个列向量
             if (axis == Axis.H)
             {
-                Mat ret = new Mat(source.Shape.Row, 1);
-                for (int i = 0; i < source.Shape.Row; i++)
+                Mat ret = new Mat(this.Shape.Row, 1);
+                for (int i = 0; i < this.Shape.Row; i++)
                 {
                     double minvalue = double.MinValue;
-                    for (int j = 0; j < source.Shape.Col; j++)
+                    for (int j = 0; j < this.Shape.Col; j++)
                     {
-                        if (minvalue > source[i, j])
-                            minvalue = source[i, j];
+                        if (minvalue > this[i, j])
+                            minvalue = this[i, j];
                     }
                     ret[i, 1] = minvalue;
                 }
@@ -70,71 +74,71 @@ namespace RevitCommon.Numerical.Matrix.Normal
             //计算每列的最大值，返回一个行向量
             else
             {
-                Mat ret = new Mat(1, source.Shape.Col);
-                for (int i = 0; i < source.Shape.Col; i++)
+                Mat ret = new Mat(1, this.Shape.Col);
+                for (int i = 0; i < this.Shape.Col; i++)
                 {
                     double minvalue = double.MinValue;
-                    for (int j = 0; j < source.Shape.Row; j++)
+                    for (int j = 0; j < this.Shape.Row; j++)
                     {
-                        if (minvalue > source[j, i])
-                            minvalue = source[j, i];
+                        if (minvalue > this[j, i])
+                            minvalue = this[j, i];
                     }
                     ret[1, i] = minvalue;
                 }
                 return ret;
             }
         }
-        public Mat Mean(Mat source, Axis axis = Axis.H)
+        public Mat Mean(Axis axis = Axis.H)
         {
             //计算每行的平均值，返回一个列向量
             if (axis == Axis.H)
             {
-                Mat ret = new Mat(source.Shape.Row, 1);
-                for (int i = 0; i < source.Shape.Row; i++)
+                Mat ret = new Mat(this.Shape.Row, 1);
+                for (int i = 0; i < this.Shape.Row; i++)
                 {
                     double sum = 0.0;
-                    for (int j = 0; j < source.Shape.Col; j++)
+                    for (int j = 0; j < this.Shape.Col; j++)
                     {
-                        sum += source[i, j];
+                        sum += this[i, j];
                     }
-                    ret[i, 1] = sum / source.Shape.Col;
+                    ret[i, 1] = sum / this.Shape.Col;
                 }
                 return ret;
             }
             //计算每列的平均值，返回一个行向量
             else
             {
-                Mat ret = new Mat(1, source.Shape.Col);
-                for (int i = 0; i < source.Shape.Col; i++)
+                Mat ret = new Mat(1, this.Shape.Col);
+                for (int i = 0; i < this.Shape.Col; i++)
                 {
                     double sum = 0.0;
-                    for (int j = 0; j < source.Shape.Row; j++)
+                    for (int j = 0; j < this.Shape.Row; j++)
                     {
-                        sum += source[j, i];
+                        sum += this[j, i];
                     }
-                    ret[1, i] = sum / source.Shape.Row;
+                    ret[1, i] = sum / this.Shape.Row;
                 }
                 return ret;
             }
         }
-        public Mat Std(Mat source,Axis axis = Axis.H)
+        public Mat Std(Axis axis = Axis.H)
         {
             //每行求方差，返回一个列向量
             if(axis == Axis.H)
             {
-                Mat ret = new Mat(source.Shape.Row, 1);
-                for (int i = 0; i < source.Shape.Row; i++)
+                Mat ret = new Mat(this.Shape.Row, 1);
+                for (int i = 0; i < this.Shape.Row; i++)
                 {
                     double sum = 0.0;
-                    for (int j = 0; j < source.Shape.Col; j++)
+                    for (int j = 0; j < this.Shape.Col; j++)
                     {
-                        sum += source[i, j];
+                        sum += this[i, j];
                     }
-                    double mean = sum / source.Shape.Col;
+                    double mean = sum / this.Shape.Col;
                     double stdsum = 0.0;
-                    for (int j = 0; j < source.Shape.Col; j++)
+                    for (int j = 0; j < this.Shape.Col; j++)
                     {
-                        stdsum += Math.Pow(source[i, j] - mean, 2);
+                        stdsum += Math.Pow(this[i, j] - mean, 2);
                     }
                     ret[i, 0] = stdsum;
                 }
@@ -146,35 +150,35 @@ namespace RevitCommon.Numerical.Matrix.Normal
                 return default(Mat);
             }
         }
-        public Mat Var(Mat source,Axis axis = Axis.H)
+        public Mat Var(Axis axis = Axis.H)
         {
             return default(Mat);
         }
         /// <summary>
         /// 协方差
         /// </summary>
-        public Mat Cov(Mat source)
+        public Mat Cov()
         {
             return default(Mat);
         }
         /// <summary>
         /// 计算行列式
         /// </summary>
-        public double? Det(Mat source)
+        public double? Det()
         {
             return null;
         }
         /// <summary>
         /// 计算逆矩阵
         /// </summary>
-        public Mat Inv(Mat source)
+        public Mat Inv()
         {
             return default(Mat);
         }
         /// <summary>
         /// 计算特征值和特征向量
         /// </summary>
-        public void Eig(Mat source,out Mat vectors,out Mat values)
+        public void Eig(out Mat vectors,out Mat values)
         {
             vectors = null;
             values = null;
@@ -182,12 +186,9 @@ namespace RevitCommon.Numerical.Matrix.Normal
         private Mat MathOpr(Mat source,Func<double,double> func)
         {
             Mat ret = new Mat(source.Shape);
-            for (int i = 0; i < source.Shape.Row; i++)
+            for (int i = 0; i < source.MemoryStorage.ItemCount; i++)
             {
-                for (int j = 0; j < source.Shape.Col; j++)
-                {
-                    ret[i, j] = func(source[i,j]);
-                }
+                ret.MemoryStorage[i] = func(source.MemoryStorage[i]);
             }
             return ret;
         }
@@ -197,7 +198,12 @@ namespace RevitCommon.Numerical.Matrix.Normal
         /// <returns></returns>
         public double CumSum()
         {
-            return 0;
+            double result = 0.0;
+            for (int i = 0; i < this.MemoryStorage.ItemCount; i++)
+            {
+                result += MemoryStorage[i];
+            }
+            return result;
         }
         /// <summary>
         /// 所有元素的累计积
@@ -205,20 +211,20 @@ namespace RevitCommon.Numerical.Matrix.Normal
         /// <returns></returns>
         public double CumProd()
         {
-            return 0;
-        }
-        public static Mat Pow(Mat source)
-        {
-            Mat ret = new Mat(source.Shape);
-
-            for (int i = 0; i < source.Shape.Row; i++)
+            double result = 1.0;
+            for (int i = 0; i < this.MemoryStorage.ItemCount; i++)
             {
-                for (int j = 0; j < source.Shape.Col; j++)
-                {
-                    ret[i, j] = Math.Pow(source[i, j], 2);
-                }
+                result *= MemoryStorage[i];
             }
-
+            return result;
+        }
+        public Mat Pow(double y)
+        {
+            Mat ret = new Mat(Shape);
+            for (int i = 0; i < ret.MemoryStorage.ItemCount; i++)
+            {
+                ret.MemoryStorage[i] = Math.Pow(this.MemoryStorage[i], y);
+            }
             return ret;
         }
         /// <summary>
@@ -227,17 +233,17 @@ namespace RevitCommon.Numerical.Matrix.Normal
         /// <param name="source">矩阵</param>
         /// <param name="axis">若axis == Axis.H,结果返回一个列向量</param>
         /// <returns></returns>
-        public static Mat Sum(Mat source, Axis axis = Axis.H)
+        public Mat Sum(Axis axis = Axis.H)
         {
             if (axis == Axis.H)
             {
-                Mat ret = new Mat(source.Shape.Row, 1);
-                for (int i = 0; i < source.Shape.Row; i++)
+                Mat ret = new Mat(this.Shape.Row, 1);
+                for (int i = 0; i < this.Shape.Row; i++)
                 {
                     double sum = 0.0;
-                    for (int j = 0; j < source.Shape.Col; j++)
+                    for (int j = 0; j < this.Shape.Col; j++)
                     {
-                        sum += source[i, j];
+                        sum += this[i, j];
                     }
                     ret[i, 0] = sum;
                 }
@@ -245,13 +251,13 @@ namespace RevitCommon.Numerical.Matrix.Normal
             }
             else
             {
-                Mat ret = new Mat(1, source.Shape.Col);
-                for (int i = 0; i < source.Shape.Col; i++)
+                Mat ret = new Mat(1, this.Shape.Col);
+                for (int i = 0; i < this.Shape.Col; i++)
                 {
                     double sum = 0.0;
-                    for (int j = 0; j < source.Shape.Row; j++)
+                    for (int j = 0; j < this.Shape.Row; j++)
                     {
-                        sum += source[j, i];
+                        sum += this[j, i];
                     }
                     ret[0, i] = sum;
                 }

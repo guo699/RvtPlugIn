@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitCommon.Numerical.Matrix.Normal
+namespace RevitCommon.Numerical.Matrix
 {
     public partial class Mat
     {
-        public static Mat One(int dim)
+        public static Mat Ones(int dim)
         {
             Mat ret = new Mat(dim, dim, 1);
             return ret;

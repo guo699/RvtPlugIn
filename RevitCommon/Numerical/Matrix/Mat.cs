@@ -1,12 +1,11 @@
-﻿using RevitCommon.Numerical.Matrix.Basic;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitCommon.Numerical.Matrix.Normal
+namespace RevitCommon.Numerical.Matrix
 {
     /// <summary>
     /// 非泛型二维矩阵
@@ -15,12 +14,12 @@ namespace RevitCommon.Numerical.Matrix.Normal
     {
         internal UnmgdMemoryBlock<double> MemoryStorage;
         private Shape _shape;
-        public Shape Shape { get => _shape; set => throw new NotImplementedException(); }
+        public Shape Shape { get => _shape;}
         public Mat(int row, int col, double fillvalue = 0)
         {
             _shape = new Shape(row, col);
             MemoryStorage = new UnmgdMemoryBlock<double>(_shape.Size);
-            FillValue(fillvalue);
+            this.fillvalue(fillvalue);
         }
         public Mat(Shape shape)
         {
@@ -39,11 +38,11 @@ namespace RevitCommon.Numerical.Matrix.Normal
                 }
             }
         }
-        private void FillValue(double fillvalue)
+        private void fillvalue(double value)
         {
             for (int i = 0; i < _shape.Size; i++)
             {
-                MemoryStorage[i] = fillvalue;
+                MemoryStorage[i] = value;
             }
         }
         public override string ToString()

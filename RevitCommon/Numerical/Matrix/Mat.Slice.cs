@@ -1,11 +1,10 @@
-﻿using RevitCommon.Numerical.Matrix.Basic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitCommon.Numerical.Matrix.Normal
+namespace RevitCommon.Numerical.Matrix
 {
     public partial class Mat
     {
@@ -105,7 +104,7 @@ namespace RevitCommon.Numerical.Matrix.Normal
                 }
                 catch(Exception ex)
                 {
-                    throw new ArgumentException("切片参数异常");
+                    throw new ArgumentException(ex.Message + "切片参数异常");
                 }
             }
         }

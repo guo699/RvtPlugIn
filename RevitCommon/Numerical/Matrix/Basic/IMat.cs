@@ -8,6 +8,6 @@ namespace RevitCommon.Numerical.Matrix
 {
     interface IMat
     {
-        Shape Shape { get; set;}
+        Shape Shape { get;}
     }
 }

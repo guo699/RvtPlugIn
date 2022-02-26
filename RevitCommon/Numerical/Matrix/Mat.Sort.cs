@@ -1,11 +1,10 @@
-﻿using RevitCommon.Numerical.Matrix.Basic;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitCommon.Numerical.Matrix.Normal
+namespace RevitCommon.Numerical.Matrix
 {
     public partial class Mat
     {

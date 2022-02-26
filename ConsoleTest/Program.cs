@@ -8,9 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using RevitCommon.Numerical.Matrix;
-using RevitCommon.Numerical.Matrix.Basic;
-using RevitCommon.Numerical.Matrix.Basic.Datasets;
-using RevitCommon.Numerical.Matrix.Normal;
+using RevitCommon.Numerical.Matrix.Datasets;
 using RevitCommon.Utilitis;
 
 
