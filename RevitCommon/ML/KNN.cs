@@ -68,7 +68,17 @@ namespace RevitCommon.ML
                     else
                         ls[y] += 1;
                 }
-                y_pred[i,0] = ls.LastOrDefault().Key;
+                double maxy = ls.First().Key;
+                int maxcount = ls.First().Value;
+                foreach (var item in ls)
+                {
+                    if(item.Value > maxcount)
+                    {
+                        maxy = item.Key;
+                        maxcount = item.Value;
+                    }
+                }
+                y_pred[i, 0] = maxy;
             }
             return y_pred;
         }

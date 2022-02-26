@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using RevitCommon.ML;
 using RevitCommon.Numerical.Matrix;
 using RevitCommon.Numerical.Matrix.Datasets;
@@ -10,7 +11,7 @@ namespace ConsoleTest
     {
         static unsafe void Main(string[] args)
         {
-            Bunch iris = DataLoader.LoadDigits();
+            Bunch iris = DataLoader.LoadIris();
             Mat X = iris[BunchKey.Data];
             Mat Y = iris[BunchKey.Target];
             Y = Y.T();
