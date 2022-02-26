@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RevitCommon.Extensions;
 
 namespace RevitCommon.Numerical.Matrix
 {
@@ -35,8 +36,20 @@ namespace RevitCommon.Numerical.Matrix
             }
             return ret;
         }
-        public static void Shuffle(Mat source)
+
+        public static int[] DisorderArray(int start, int stop,int seed = 666)
         {
+            Random random = new Random(seed);
+            int Count = stop - start + 1;
+            int[] numbers = Enumerable.Range(start, Count).ToArray();
+            for (int i = Count; i > 0; i--)
+            {
+                int k = random.Next(0, Count-1);
+                int temp = numbers[i - 1];
+                numbers[i - 1] = numbers[k];
+                numbers[k] = temp;
+            }
+            return numbers;
         }
     }
 }

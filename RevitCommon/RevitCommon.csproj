@@ -87,6 +87,7 @@
     <Compile Include="ML\KNN.cs" />
     <Compile Include="ML\LinearRegression.cs" />
     <Compile Include="ML\LogisticRegression.cs" />
+    <Compile Include="ML\ModelSelection.cs" />
     <Compile Include="ML\PCA.cs" />
     <Compile Include="Numerical\Matrix\Basic\Axis.cs" />
     <Compile Include="Numerical\Matrix\Basic\Datasets\Bunch.cs" />

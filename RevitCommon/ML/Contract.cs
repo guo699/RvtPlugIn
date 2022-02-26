@@ -11,7 +11,8 @@ namespace RevitCommon.ML
     {
         public static void EnsuresFitXY(Mat X,Mat Y)
         {
-
+            if (X.Shape.Row != Y.Shape.Row || Y.Shape.Col != 1)
+                throw new Exception("训练数据尺寸不匹配");
         }
     }
 }
