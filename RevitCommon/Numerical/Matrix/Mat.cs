@@ -107,7 +107,7 @@ namespace RevitCommon.Numerical.Matrix
         }
         public bool MoveNext()
         {
-            if(_index > -1 && _index < _mat.Shape.Size)
+            if(_index < _mat.Shape.Size-1)
             {
                 _index++;
                 return true;

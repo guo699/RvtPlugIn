@@ -81,19 +81,21 @@
     <Compile Include="Extensions\ElementEx.Solid.cs" />
     <Compile Include="Extensions\LinqEx.cs" />
     <Compile Include="Extensions\XYZEx.cs" />
-    <Compile Include="ML\Contract.cs" />
-    <Compile Include="ML\ISupervised.cs" />
-    <Compile Include="ML\Iunsupervised.cs" />
-    <Compile Include="ML\KNN.cs" />
-    <Compile Include="ML\LinearRegression.cs" />
-    <Compile Include="ML\LogisticRegression.cs" />
-    <Compile Include="ML\ModelSelection.cs" />
-    <Compile Include="ML\PCA.cs" />
+    <Compile Include="ML\Base\Contract.cs" />
+    <Compile Include="ML\Base\ISupervised.cs" />
+    <Compile Include="ML\Base\Iunsupervised.cs" />
+    <Compile Include="ML\Neighbors\KNN.cs" />
+    <Compile Include="ML\LinearModel\LinearRegression.cs" />
+    <Compile Include="ML\LinearModel\LogisticRegression.cs" />
+    <Compile Include="ML\Metrics\ClassifyEvaluation.cs" />
+    <Compile Include="ML\Metrics\RegEvaluation.cs" />
+    <Compile Include="ML\ModelSelection\ModelSelection.cs" />
+    <Compile Include="ML\Decomposition\PCA.cs" />
     <Compile Include="Numerical\Matrix\Basic\Axis.cs" />
-    <Compile Include="Numerical\Matrix\Basic\Datasets\Bunch.cs" />
-    <Compile Include="Numerical\Matrix\Basic\Datasets\CsvReader.cs" />
-    <Compile Include="Numerical\Matrix\Basic\Datasets\DataLoader.cs" />
-    <Compile Include="Numerical\Matrix\Basic\Datasets\DataProducer.cs" />
+    <Compile Include="ML\Datasets\Bunch.cs" />
+    <Compile Include="ML\Datasets\CsvReader.cs" />
+    <Compile Include="ML\Datasets\DataLoader.cs" />
+    <Compile Include="ML\Datasets\DataProducer.cs" />
     <Compile Include="Numerical\Matrix\Basic\MatTypeCode.cs" />
     <Compile Include="Numerical\Matrix\Basic\Slice.cs" />
     <Compile Include="Numerical\Matrix\Basic\ThrowHelper.cs" />
@@ -120,7 +122,9 @@
     <Compile Include="WPF\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ML\Metrics\" />
+    <Folder Include="ML\DiscriminantAnalysis\" />
+    <Folder Include="ML\NeuralNetwork\" />
+    <Folder Include="ML\SVM\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

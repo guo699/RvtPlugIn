@@ -49,15 +49,17 @@ namespace RevitCommon.Numerical.Matrix
         /// <summary>
         /// 若干个矩阵水平方向叠加
         /// </summary>
-        public Mat HStack(params Mat[] mats)
+        public static Mat HStack(params Mat[] mats)
         {
             int[] rowls = mats.Select(n => n.Shape.Row).ToArray();
             int[] colls = mats.Select(n => n.Shape.Col).ToArray();
+
             if (!rowls.All(n => n == rowls[0]))
                 throw new NotSupportedException("矩阵行数不一致");
             int sumcol = colls.Sum();
 
             Mat ret = new Mat(rowls[0], sumcol);
+
             int col = 0;
             int catcol = 0;
             for (int i = 0; i < colls.Length; i++)

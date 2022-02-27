@@ -1,8 +1,9 @@
-﻿using System;
+﻿using RevitCommon.Numerical.Matrix;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace RevitCommon.Numerical.Matrix.Datasets
+namespace RevitCommon.ML.Datasets
 {
     internal class CsvReader
     {

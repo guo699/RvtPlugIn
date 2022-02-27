@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitCommon.ML
+namespace RevitCommon.ML.ModelSelection
 {
     public abstract class ModelSelection
     {

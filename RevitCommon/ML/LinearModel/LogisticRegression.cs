@@ -1,11 +1,12 @@
-﻿using RevitCommon.Numerical.Matrix;
+﻿using RevitCommon.ML.Base;
+using RevitCommon.Numerical.Matrix;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RevitCommon.ML
+namespace RevitCommon.ML.LinearModel
 {
     public class LogisticRegression : ISupervised
     {

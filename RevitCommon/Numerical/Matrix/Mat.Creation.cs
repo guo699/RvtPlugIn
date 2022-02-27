@@ -4,9 +4,9 @@ namespace RevitCommon.Numerical.Matrix
 {
     public partial class Mat
     {
-        public static Mat Ones(int dim)
+        public static Mat Ones(int rows,int cols)
         {
-            Mat ret = new Mat(dim, dim, 1);
+            Mat ret = new Mat(rows, cols, 1);
             return ret;
         }
         public static Mat Eye(int dim)
@@ -65,10 +65,16 @@ namespace RevitCommon.Numerical.Matrix
             double value = start;
             for (int i = 0; i < count; i++)
             {
-                mat[1,i] = value;
-                start += delta;
+                mat[0,i] = value;
+                value += delta;
             }
             return mat;
+        }
+
+        public static Mat Empty(int rows,int cols)
+        {
+            Mat ret = new Mat(rows, cols, double.MinValue);
+            return ret;
         }
     }
 }

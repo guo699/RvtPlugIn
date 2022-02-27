@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RevitCommon.ML.Base;
 using RevitCommon.Numerical.Matrix;
 
-namespace RevitCommon.ML
+namespace RevitCommon.ML.Neighbors
 {
     public class KNN : ISupervised
     {
