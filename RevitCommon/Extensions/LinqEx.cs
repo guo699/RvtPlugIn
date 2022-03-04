@@ -12,5 +12,70 @@ namespace RevitCommon.Extensions
         {
             return source.Select(func).ToList();
         }
+
+        public static T MaxBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> func, Comparer<TKey> compare)
+        {
+            if (compare == null)
+                compare = Comparer<TKey>.Default;
+
+            T max = source.FirstOrDefault();
+            foreach (var item in source)
+            {
+                if (compare.Compare(func(item), func(max)) > 0)
+                    max = item;
+            }
+            return max;
+        }
+
+        public static T MinBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> func, Comparer<TKey> compare)
+        {
+            if (compare == null)
+                compare = Comparer<TKey>.Default;
+
+            T min = source.FirstOrDefault();
+            foreach (var item in source)
+            {
+                if (compare.Compare(func(item), func(min)) < 0)
+                    min = item;
+            }
+            return min;
+        }
+
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
+        {
+            return source == null || source.Count() == 0;
+        }
+        
+        public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T> source)
+        {
+            foreach (var item in source)
+            {
+                if (item != null)
+                    yield return item;
+            }
+        }
+
+        public static void Shuffle<T>(IList<T> serials,int seed = 666) where T:unmanaged
+        {
+            Random r = new Random(666);
+            for (int i = serials.Count; i > 0; i--)
+            {
+                int idx = r.Next(0, serials.Count);
+                T temp = serials[i - 1];
+                serials[i - 1] = serials[idx];
+                serials[idx] = temp;
+            }
+        }
+
+        public static IEnumerable<double> LinSpace(double start,double stop,int count)
+        {
+            double delta = (stop - start) / count;
+            for (int i = 0; i < count; i++)
+            {
+                yield return i * delta;
+            }
+        }
+
+        public static
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using RevitCommon.Extensions;
 using RevitCommon.ML;
 using RevitCommon.ML.Datasets;
 using RevitCommon.ML.ModelSelection;
@@ -13,12 +14,26 @@ namespace ConsoleTest
     {
         static unsafe void Main(string[] args)
         {
-            Mat m1 = Mat.Ones(5, 3);
-            Mat m2 = Mat.Ones(5, 6) * 3;
+            List<Dog> ls = new List<Dog>();
+            ls.Add(new Dog(1));
+            ls.Add(new Dog(6));
+            ls.Add(new Dog(3));
+            ls.Add(new Dog(2));
+            ls.Add(new Dog(8));
 
-            Mat m3 = Mat.HStack(m1, m2);
-            Console.WriteLine(m3.ToString());
+            Dog a = ls.MaxBy(n => n.Age,null);
+
+            Console.WriteLine(a.Age);
         } 
+
+        class Dog
+        {
+            public int Age;
+            public Dog(int age)
+            {
+                Age = age;
+            }
+        }
         
     }
 }
