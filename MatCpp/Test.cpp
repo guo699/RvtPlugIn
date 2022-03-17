@@ -2,19 +2,21 @@
 #include <string>
 #include <vector>
 #include <cstdint>
+#include <algorithm>
+#include <typeinfo>
 
 using namespace std;
 
-constexpr uint64_t sum(int start)
+
+int main(int argc, char* args[])
 {
-	if (start == 1)
-		return 1;
-	else
-		return start + sum(start - 1);
-}
+	int n;
+
+	malloc(1024 * 1024 * 1024);
+	cin >> n;
+
+	cout << n + 1 << endl;
 
 
-int main()
-{
-	return 0;
+	system("pause");
 }

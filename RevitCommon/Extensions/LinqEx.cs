@@ -41,12 +41,12 @@ namespace RevitCommon.Extensions
             return min;
         }
 
-        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source) where T:class
         {
             return source == null || source.Count() == 0;
         }
         
-        public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T> source)
+        public static IEnumerable<T> WhereNotNull<T>(this IEnumerable<T> source) where T:class
         {
             foreach (var item in source)
             {
@@ -55,7 +55,7 @@ namespace RevitCommon.Extensions
             }
         }
 
-        public static void Shuffle<T>(IList<T> serials,int seed = 666) where T:unmanaged
+        public static void Shuffle<T>(IList<T> serials,int seed = 666)
         {
             Random r = new Random(666);
             for (int i = serials.Count; i > 0; i--)
@@ -75,7 +75,5 @@ namespace RevitCommon.Extensions
                 yield return i * delta;
             }
         }
-
-        public static
     }
 }
