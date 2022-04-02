@@ -7,16 +7,25 @@
 
 using namespace std;
 
+class Dog
+{
+public:
+	int age;
+};
+
+void setAge(Dog& dog)
+{
+	dog.age += 200;
+}
 
 int main(int argc, char* args[])
 {
-	int n;
+	Dog d;
+	d.age = 30;
 
-	malloc(1024 * 1024 * 1024);
-	cin >> n;
+	setAge(d);
 
-	cout << n + 1 << endl;
-
+	cout << d.age << endl;
 
 	system("pause");
 }

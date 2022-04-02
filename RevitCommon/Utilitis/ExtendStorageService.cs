@@ -7,23 +7,21 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.Utilitis
 {
-    public sealed class ExtendStorageService
+    public static class ExtendStorageService
     {
-        public static readonly ExtendStorageService Instance = new ExtendStorageService();
-        private ExtendStorageService() { }
-        public void Write(Element element,ExtendKey key,string content)
+        public static void Write(Element element,ExtendKey key,string content)
         {
 
         }
-        public void WriteBytes(Element element,ExtendKey key,byte[] content)
+        public static void WriteBytes(Element element,ExtendKey key,byte[] content)
         {
 
         }
-        public string Read(Element element,ExtendKey key)
+        public static string Read(Element element,ExtendKey key)
         {
             return string.Empty;
         }
-        public byte[] ReadBytes(Element element,ExtendKey key)
+        public static byte[] ReadBytes(Element element,ExtendKey key)
         {
             return new byte[100];
         }

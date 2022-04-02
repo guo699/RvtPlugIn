@@ -25,9 +25,6 @@ namespace BaseTest.Command
             UIDoc = commandData.Application.ActiveUIDocument;
             Doc = UIDoc.Document;
 
-            //TextNoteType noteType = Doc.GetElements<TextNoteType>().FirstOrDefault();
-            //this.CreateTexts(40, noteType);
-
             double[] result = new double[5];
             for (int i = 0; i < 5; i++)
             {
@@ -101,50 +98,6 @@ namespace BaseTest.Command
             return diss;
         }
 
-        public List<XYZ> RandomPoints(int count)
-        {
-            List<XYZ> points = new List<XYZ>(count);
-
-            Random r = new Random();
-            XYZ point;
-            double x, y, z;
-            for (int i = 0; i < count; i++)
-            {
-                x = r.NextDouble()/10;
-                y = r.NextDouble()/10;
-                z = r.NextDouble()/10;
-                point = new XYZ(x, y, z);
-                points.Add(point);
-            }
-            return points;
-        }
-
-        public List<TextNote> CreateTexts(int count,TextNoteType notetype)
-        {
-            List<TextNote> notes = new List<TextNote>(count);
-            List<XYZ> points = RandomPoints(count);
-            TextNote note;
-            TextNoteOptions options = new TextNoteOptions(notetype.Id);
-            Random r = new Random();
-            TransactionInvoker.Action(Doc, "Create TextNote", () =>
-             {
-                 for (int i = 0; i < count; i++)
-                 {
-                     options.Rotation = r.NextDouble() * Math.PI;
-                     note = TextNote.Create(Doc, Doc.ActiveView.Id, points[i], (i + 1).ToString("000"), options);
-                     notes.Add(note);
-                 }
-
-                 Line l1 = Line.CreateBound(new XYZ(), new XYZ(0.1, 0, 0));
-                 Line l2 = l1.CreateOffset(-0.1, Doc.ActiveView.ViewDirection) as Line;
-                 Line l3 = Line.CreateBound(new XYZ(), new XYZ(0, 0.1, 0));
-                 Line l4 = l3.CreateOffset(0.1, Doc.ActiveView.ViewDirection) as Line;
-                 Doc.Create.NewDetailCurve(Doc.ActiveView, l1);
-                 Doc.Create.NewDetailCurve(Doc.ActiveView, l2);
-                 Doc.Create.NewDetailCurve(Doc.ActiveView, l3);
-                 Doc.Create.NewDetailCurve(Doc.ActiveView, l4);
-             });
-            return notes;
-        }
+        
     }
 }

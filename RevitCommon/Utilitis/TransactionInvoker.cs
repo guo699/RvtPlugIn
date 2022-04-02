@@ -11,11 +11,20 @@ namespace RevitCommon.Utilitis
     {
         public static void Action(Document doc,string transactionName,Action action)
         {
-            using(Transaction ts = new Transaction(doc))
+            Transaction ts = null;
+            try
             {
-                ts.Start(transactionName);
-                action();
-                ts.Commit();
+                using(ts = new Transaction(doc))
+                {
+                    ts.Start(transactionName);
+                    action();
+                    ts.Commit();
+                }
+            }
+            catch(Exception ex)
+            {
+                ts?.RollBack();
+                throw ex;
             }
         }
     }

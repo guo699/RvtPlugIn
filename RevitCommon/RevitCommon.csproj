@@ -83,7 +83,9 @@
     <Compile Include="Extensions\XYZEx.cs" />
     <Compile Include="ML\Base\Contract.cs" />
     <Compile Include="ML\Base\ISupervised.cs" />
-    <Compile Include="ML\Base\Iunsupervised.cs" />
+    <Compile Include="ML\Base\IUnsupervised.cs" />
+    <Compile Include="ML\Datasets\BunchKey.cs" />
+    <Compile Include="ML\Datasets\FileSourcePaths.cs" />
     <Compile Include="ML\Neighbors\KNN.cs" />
     <Compile Include="ML\LinearModel\LinearRegression.cs" />
     <Compile Include="ML\LinearModel\LogisticRegression.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="ML\Metrics\RegEvaluation.cs" />
     <Compile Include="ML\ModelSelection\ModelSelection.cs" />
     <Compile Include="ML\Decomposition\PCA.cs" />
+    <Compile Include="ML\SVM\SVM.cs" />
     <Compile Include="Numerical\Matrix\Basic\Axis.cs" />
     <Compile Include="ML\Datasets\Bunch.cs" />
     <Compile Include="ML\Datasets\CsvReader.cs" />
@@ -115,16 +118,22 @@
     <Compile Include="Utilitis\ExtendKey.cs" />
     <Compile Include="Utilitis\ExtendStorageService.cs" />
     <Compile Include="Utilitis\SelectionFilter.cs" />
-    <Compile Include="Utilitis\SysHelper.cs" />
+    <Compile Include="Utilitis\SysUtils.cs" />
     <Compile Include="Utilitis\TransactionInvoker.cs" />
     <Compile Include="Utilitis\XYZToCSV.cs" />
     <Compile Include="WPF\DelegateCommand.cs" />
     <Compile Include="WPF\ViewModelBase.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ML\DiscriminantAnalysis\" />
-    <Folder Include="ML\NeuralNetwork\" />
-    <Folder Include="ML\SVM\" />
+    <Content Include="ML\Decomposition\About.txt" />
+    <Content Include="ML\DiscriminantAnalysis\About.txt" />
+    <Content Include="ML\LinearModel\About.txt" />
+    <Content Include="ML\Metrics\About.txt" />
+    <Content Include="ML\ModelSelection\About.txt" />
+    <Content Include="ML\Neighbors\About.txt" />
+    <Content Include="ML\NeuralNetwork\About.txt" />
+    <Content Include="ML\SVM\About.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

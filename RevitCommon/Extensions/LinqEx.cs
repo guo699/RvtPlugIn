@@ -8,6 +8,10 @@ namespace RevitCommon.Extensions
 {
     public static class LinqEx
     {
+        public static IEnumerable<T> Yield<T>(this T item)
+        {
+            yield return item;
+        }
         public static List<TOut> ToList<TIn,TOut>(this IEnumerable<TIn> source,Func<TIn,TOut> func)
         {
             return source.Select(func).ToList();
@@ -55,8 +59,9 @@ namespace RevitCommon.Extensions
             }
         }
 
-        public static void Shuffle<T>(IList<T> serials,int seed = 666)
+        public static void Shuffle<T>(this IList<T> serials,int seed = 666)
         {
+            //经典的洗牌算法
             Random r = new Random(666);
             for (int i = serials.Count; i > 0; i--)
             {

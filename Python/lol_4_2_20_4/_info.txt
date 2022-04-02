@@ -1,0 +1,1 @@
+vertices = 3 pop_num = 16 polygon_num = 60 img_width = 100 img_height = 100

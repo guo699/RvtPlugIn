@@ -3,24 +3,6 @@ using System;
 
 namespace RevitCommon.ML.Datasets
 {
-    public enum BunchKey:ushort
-    {
-        Data = 0,
-        Target = 1,
-        FeatureName = 2,
-        TargetName = 3,
-        Introduction = 4,
-    }
-
-    internal readonly struct FileSourcePaths
-    {
-        private const string _path = "..\\..\\..\\Datasets\\CsvData\\";
-        public  const string Iris = _path + "iris.csv";
-        public  const string Wine = _path + "wine_data.csv";
-        public  const string Boston = _path + "boston_house_prices.csv";
-        public  const string BreastCancer = _path + "breast_cancer.csv";
-        public  const string Digits = _path + "digits.csv";
-    }
     public sealed class Bunch
     {
         private Mat _data;

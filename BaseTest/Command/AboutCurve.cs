@@ -8,6 +8,7 @@ using RevitCommon.Utilitis;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -25,11 +26,6 @@ namespace BaseTest.Command
             UIDoc = commandData.Application.ActiveUIDocument;
             Doc = UIDoc.Document;
 
-            Window window = new Window();
-            RichTextBox box = new RichTextBox();
-            box.Document = new System.Windows.Documents.FlowDocument();
-            window.Content = box;
-            window.Show();
 
             return Result.Succeeded;
         }

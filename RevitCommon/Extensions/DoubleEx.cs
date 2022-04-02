@@ -13,9 +13,20 @@ namespace RevitCommon.Extensions
         {
             return mm / FeetUnit;
         }
+
+        public static double MM2Feet(this int mm)
+        {
+            return ((double)mm) / FeetUnit;
+        }
+
         public static double Feet2MM(this double feet)
         {
             return feet * FeetUnit;
+        }
+
+        public static double Feet2MM(this int feet)
+        {
+            return ((double)feet) * FeetUnit;
         }
 
         public static double Angle2Radian(this double angle)

@@ -72,7 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\AboutCurve.cs" />
+    <Compile Include="Command\CadTransCmd.cs" />
     <Compile Include="Command\RandomText.cs" />
+    <Compile Include="Command\ScatteredText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RevitCommon.ML.Decomposition
 {
-    public class PCA: Iunsupervised
+    public class PCA: IUnsupervised
     {
 
     }
