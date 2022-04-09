@@ -8,8 +8,8 @@ import datetime
 
 from sewar.full_ref import mse, rmse, psnr, uqi, ssim, ergas, scc, rase, sam, msssim, vifp
 
-img_path = "origin_pic"  # 图片文件夹
-img_name = "lol.png"  # 图片文件名
+img_path = r"D:\\Code\\CSharp\\RevitPlugIns\\RvtPlugIn\\Python\\Image"  # 图片文件夹
+img_name = "11.png"  # 图片文件名
 img_obj = cv2.imread(os.path.join(img_path, img_name))
 max_sim = float("inf")  # 初始化相似度描述量，根据当前的相似度算法，相似度越高此值越小（根据不同的相似度算法含义不同）
 
@@ -25,7 +25,7 @@ img_height = 100  # 图片高
 
 def main():
     init()  # 生成第一代
-    for _ in range(10000000):
+    for _ in range(20000):
         select()  # 选择
         cross()  # 生成后一代
 
