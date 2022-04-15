@@ -37,6 +37,25 @@ namespace RevitCommon.Numerical.Matrix
             return ret;
         }
 
+        public static Mat Choice(Mat values,int size,params double[] probs)
+        {
+            Mat ret = new Mat(0, size);
+
+            List<(double prob_b, double prob_u)> prob_ranges = new List<(double prob_b, double prob_u)>();
+            double prob_b = 0, prob_u = 0;
+            for (int i = 0; i < probs.Length; i++)
+            {
+                (double, double) prob_range;
+                prob_range.Item1 = prob_b;
+                prob_u = prob_b + probs[i] / probs.Sum();
+                prob_range.Item2 = prob_u;
+                prob_ranges.Add(prob_range);
+                prob_b = prob_u;
+            }
+
+            return ret;
+        }
+
         public static int[] DisorderArray(int start, int stop,int seed = 666)
         {
             Random random = new Random(seed);
